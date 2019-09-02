@@ -2,10 +2,276 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  	<link href="style.css" rel="stylesheet">
     <title>C.M. Schrader</title>
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
   </head>
   <body>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top">
+      <div class="container-fluid">
+      	<a class="navbar-brand" href="#">
+          <!--<img class="navlogo" src="img/profesional.jpg">-->
+          <h6 class="headline display-4 text-light">C.M. Schrader</h6>
+        </a>
+      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      		<span class="navbar-toggler-icon"></span>
+      	</button>
+      	<div class="collapse navbar-collapse" id="navbarResponsive">
+      		<ul class="navbar-nav ml-auto">
+      			<li class="nav-item active">
+      				<a class="nav-link text-light" href="#">Home</a>
+      			</li>
+      			<li class="nav-item">
+      				<a class="nav-link text-light" href="#">Leadership</a>
+      			</li>
+      			<li class="nav-item">
+      				<a class="nav-link text-light" href="#">Projects</a>
+      			</li>
+      			<li class="nav-item">
+      				<a class="nav-link text-light" href="img/resume.pdf" target="_blank">
+                Resumé
+              </a>
+      			</li>
+      			<li class="nav-item">
+      				<a class="nav-link text-light" href="#Contact-Info">Contact</a>
+      			</li>
+      		</ul>
+      	</div>
+      </div>
+    </nav>
+
+    <!-- Fixed Header -->
+    <figure style="padding: 17%;">
+      <h1>Christian Max Schrader</h1>
+      <div class="fixed-wrap">
+    		<div id="fixed">
+          <img class="headline-img centered" src="img/profesional.jpg">
+          <h1 class="headline display-1 text-light text-center">
+            Christian M. Schrader
+          </h1>
+          <h2 class="headline display-4 text-light text-center">
+            Aerospace Engineer
+          </h2>
+    		</div>
+    	</div>
+    </figure>
+
+    <!-- About -->
+    <div class="container-fluid">
+    	<div class="row jumbotron">
+    		<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+    			<p class="lead">
+    				I'm Christian Maximilian Schrader although I go by Max.  In 2021,
+            I will be graduating form Worcester Polytechnic Institute with a
+            Aerospace Engineering major and Computer Science minor.  Through
+            hard work and a lot of experience, I've become a capable engineer
+            and an effective leader.
+    			</p>
+    		</div>
+    		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+    			<a href="img/resume.pdf" target="_blank">
+    				<button type="button" class="btn btn-outline-primary btn-lg"
+            style="margin-top: .6em;">
+              My Resumé
+            </button>
+    			</a>
+    		</div>
+    	</div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="container-fluid padding">
+    	<div class="row welcome text-center">
+    		<div class="col-12">
+    			<h1 class="display-4">Leadership</h1>
+    		</div>
+    		<hr>	<!-- This <hr> doesn't display! -->
+    		<div class="col-12">
+    			<p class="lead">
+            Over the years, I've held a variety of posistions.  I took each one
+            as an opportunity to improve my leadership ability and lead my team
+            to success.
+    			</p>
+    		</div>
+
+        <!-- USLI -->
+        <div class="row padding leadership">
+      		<div class="col-md-12 col-lg-6">
+      			<h1>NASA Student Launch Initiative</h1>
+            <h6>
+              WPI
+              <abbr title="American Institute of Aeronautics and Astronautics">
+                AIAA
+              </abbr>
+            </h6>
+            <dl class="text-muted">
+              <dt>Captain</dt>
+              <dd>2019 - 2020 Competition Year</dd>
+              <dt>Safety Officer</dt>
+              <dd>2018 - 2019 Competition Year</dd>
+              <dt>Co-Founder</dt>
+              <dd>2018</dd>
+            </dl>
+      			<p class="text-justify">
+      				Towards the end of my sophmore year, I joined up with two other
+              students to found a NASA Student Launch Initiative Team as a
+              subcomitee of the WPI Student Chapter of the AIAA.  While the club
+              had competed in rocketry competitions before, Student Launch was
+              a far greater challenge.
+      			</p>
+      			<p class="text-justify">
+      				The competition involves designing, testing, and building a rocket
+              to fly as close as possible to a target altitude, typically around
+              one mile.  After landing, it must deploy a payload to complete a
+              specific task such as taking a soil sample.
+      			</p>
+      			<p class="text-justify">
+              To compete, teams must respond to NASA's <abbr title="Request For
+              Proposal">RFP</abbr> within the first month of school.  Teams that
+              are accepted must complete four design reviews which ussualy take
+              the form of 150+ page technical reports followed by a conference
+              with NASA.
+      			</p>
+            <p class="text-justify">
+              Our first year, I filled the critical role of Safety Officer.  In
+              this posistion, I was responsible for minimizing risk to people,
+              property, and facilities throughout the entire process.  I also
+              managed the project's risk analysis and operation procedures in
+              our design reviews.
+            </p>
+            <p class="text-justify">
+              This year, I have been appointed Captain.  I'm responsible for
+              heading an Officer Board of 9 other Officers and leading the entire
+              team consisting of another <span style="background-color: #FFFF00"><b>###</b></span> regular Members.  Even before
+              the start of the competition, I've set our team up for success by
+              creating official procedures and explicit expectations for my
+              Officers and Members.  Thanks to the many lessons learned our first
+              year, WPI is poised to be a highly competitive team.
+            </p>
+      			<br>
+            <div class="row centered">
+        			<a href="#" class="btn btn-primary auto-vertical padding centered ">
+                Learn More
+              </a>
+    			    <a class="social padding centered" href="https://www.instagram.com/wpi_usli/"
+              target="_blank">
+                <i class="fab fa-instagram auto-vertical"></i>
+              </a>
+            </div>
+      		</div>
+      		<div class="col-lg-6 auto-vertical carousel slide" data-ride="carousel"
+          id="slides" data-interval="5000">
+            <ol class="carousel-indicators">
+          		<li data-target="#slides" data-slide-to="0" class="active"></li>
+          		<li data-target="#slides" data-slide-to="1"></li>
+          	</ol>
+          	<div class="carousel-inner">
+          		<div class="carousel-item active">
+          			<img src="img/Rocket Test Launch nocrop.jpg" alt="1st Test Flight">
+          		</div>
+          		<div class="carousel-item">
+          			<img src="img/Rocket Test Launch nocrop.jpg" alt="">
+          		</div>
+          	</div>
+      		</div>
+      	</div>
+
+        <!-- NASA Ames  -->
+        <div class="row padding leadership">
+          <div class="col-lg-6 auto-vertical carousel slide" data-ride="carousel"
+          id="slides" data-interval="5000">
+            <ol class="carousel-indicators">
+              <li data-target="#slides" data-slide-to="0" class="active"></li>
+              <li data-target="#slides" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Rocket Test Launch nocrop.jpg" alt="1st Test Flight">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Rocket Test Launch nocrop.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6">
+            <h1>HERO FireBot</h1>
+            <h6>Aeromechanics Divison, NASA Ames Research Center</h6>
+            <dl class="text-muted">
+              <dt>Intern Group Lead</dt>
+              <dd>June 3rd to August 9th, 2019</dd>
+            </dl>
+            <p class="text-justify">
+              Towords the end of my sophmore year, I joined up with two other
+              students to found a NASA Student Launch Initiative Team as a
+              subcomitee of the WPI Student Chapter of the AIAA.  While the club
+              had competed in rocketry competitions before, Student Launch was
+              a far greater challenge.
+            </p>
+            <br>
+            <div class="row centered">
+              <a href="img/FireBot Final Report.pdf" class="btn btn-primary auto-vertical padding centered ">
+                View the Final Report
+              </a>
+            </div>
+          </div>
+        </div>
+
+    	</div>
+    </div>
+
+
+    <hr class="light-100">
+
+  <!-- Footer -->
+    <footer id="Contact-Info">
+    	<div class="container-fluid padding">
+    		<div class="row">
+    			<div class="col-md-12" style="padding: 0px;">
+            <hr class="light">
+    				<h5>Contact Information</h5>
+    				<hr class="light">
+              <dl>
+                <dt>Email</dt>
+                <dd>cmschrader@wpi.edu</dd>
+                <dt>Phone</dt>
+                <dd>781-290-3098</dd>
+                <dt>Mailing Address</dt>
+                <dd>
+                  <p>100 Institute Road, Mail Box #3520</p>
+                  <p>Worcester, MA 01609</p>
+                </dd>
+              </dl>
+              <div class="social">
+                <a href="https://www.linkedin.com/in/c-m-schrader" target="_blank">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </div>
+    			</div>
+
+          <div class="col-md-12" style="padding: 0px;">
+            <hr class="light">
+            <h5>Photo Credits</h5>
+            <hr class="light">
+              <dl>
+                <dt>USLI Launch</dt>
+                <dd>Chris Renfro</dd>
+              </dl>
+          </div>
+
+    			<div class="col-12">
+    				<hr class="light">
+    				<h6>&copy; Christian Maximilian Schrader 2019</h6>
+    			</div>
+    		</div>
+    	</div>
+    </footer>
   </body>
 </html>
