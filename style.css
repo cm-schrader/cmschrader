@@ -88,13 +88,13 @@ html, body {
 }
 
 .welcome {
-    width: 75%;
+    width: 90%;
     margin: 0 auto;
     padding-top: 2rem;
 }
 .welcome hr {
   border-top: 1px solid #a2aaad;
-  width: 95%;
+  width: 80%;
   margin-top: .3rem;
   margin-bottom: 1rem;
 }
@@ -204,6 +204,18 @@ hr.light-100 {
   max-height: 30%;
 }
 
+.skill {
+  transition: all .3s ease-in-out;
+  color: #a2aaad;
+  z-index: 0;
+  position: relative;
+}
+.skill:hover {
+  transform: scale(1.8);
+  color: #a6192e;
+  z-index: -1;
+}
+
 /*---Media Queries --*/
 @media (max-width: 992px) {
 
@@ -244,7 +256,7 @@ hr.light-100 {
     font-size: 90%;
     padding: 4px 8px;
   }
-  
+
   .carousel-indicators {
     display: none;
   }

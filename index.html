@@ -14,6 +14,15 @@
   </head>
   <body>
 
+  <script type="text/javascript">
+  function change(id)
+  {
+      var elem = document.getElementById(id);
+      if (elem.innerHTML=="Close") elem.innerHTML = "Read More";
+      else elem.innerHTML = "Close";
+  }
+  </script>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top">
       <div class="container-fluid">
@@ -28,9 +37,6 @@
       		<ul class="navbar-nav ml-auto">
       			<li class="nav-item active">
       				<a class="nav-link text-light" href="#">Home</a>
-      			</li>
-      			<li class="nav-item">
-      				<a class="nav-link text-light" href="#Leadership">Leadership</a>
       			</li>
       			<li class="nav-item">
       				<a class="nav-link text-light" href="#Experience">Experience</a>
@@ -88,20 +94,167 @@
     	</div>
     </div>
 
-    <!-- Leadership -->
-    <div id="Leadership" class="container-fluid padding">
+    <!-- Skills -->
+
+    <div id="Skills" class="container-fluid padding">
+      <div class="row welcome text-center">
+        <div class="col-12">
+          <h1 class="display-4">Skills</h1>
+        </div>
+        <hr>
+        <div class="col-12">
+          <p class="lead">
+            I have a diverse skill set.  Click on them to learn more.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row centered justify-content-center" style="max-width: 65%;">
+
+        <div class="modal fade" id="Python" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Python</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">
+                  I originally taught myself Python my junior year of high school.
+                  Since then, it has become my favorite and most practived language.
+                  While I did take a Python course at WPI, my knowledge primarily comes
+                  from extensive experience in everything from personal projects to
+                  intern work.  I've worked with many popular libraries such as
+                  Matplotlib, Django, Pickle, JSON, Tkinter, Socket, and more.
+                </p>
+                <p class="text-justify">
+                  See the Experience section to see what kinds of projects I've done.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-sm-6 col-xl-4">
+          <p class="display-4 skill text-center" data-toggle="modal" data-target="#Python">Python</p>
+        </div>
+
+        <div class="modal fade" id="Solidworks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >Solidworks</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">
+                  I originally learned Solidworks my sophomore year of high school.
+                  Since then, I have made extensive use of it for a variety projects
+                  ranging from model rocket components to spacecraft engine parts.
+                  Beyond being able to build parts, I have experience working with
+                  engineering drawrings, properties, <abbr title="Project Data Managment">PDM</abbr>,
+                  and other features.
+                </p>
+                <p class="text-justify">
+                  See the Experience section to see what kinds of projects I've done.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-sm-6 col-xl-4">
+          <p class="display-4 skill text-center" data-toggle="modal" data-target="#Solidworks">Solidworks</p>
+        </div>
+
+        <div class="modal fade" id="Python" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >Python</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">
+                  I originally taught myself Python my junior year of high school.
+                  Since then, it has become my favorite and most practived language.
+                  While I did take a Python course at WPI, my knowledge primarily comes
+                  from extensive experience in everything from personal projects to
+                  intern work.  I've worked with many popular libraries such as
+                  Matplotlib, Django, Pickle, JSON, Tkinter, Socket, and more.
+                </p>
+                <p class="text-justify">
+                  See the Experience section to see what kinds of projects I've done.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-sm-6 col-xl-4">
+          <p class="display-4 skill text-center" data-toggle="modal" data-target="#Python">Python</p>
+        </div>
+
+        <div class="modal fade" id="Python" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Python</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">
+                  I originally taught myself Python my junior year of high school.
+                  Since then, it has become my favorite and most practived language.
+                  While I did take a Python course at WPI, my knowledge primarily comes
+                  from extensive experience in everything from personal projects to
+                  intern work.  I've worked with many popular libraries such as
+                  Matplotlib, Django, Pickle, JSON, Tkinter, Socket, and more.
+                </p>
+                <p class="text-justify">
+                  See the Experience section to see what kinds of projects I've done.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-3">
+          <p class="skill text-center" data-toggle="modal" data-target="#Python">Python</p>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <hr class="light-100">
+
+
+    <!-- Experience -->
+    <div id="Experience" class="container-fluid padding">
     	<div class="row welcome text-center">
     		<div class="col-12">
-    			<h1 class="display-4">Leadership</h1>
+    			<h1 class="display-4">Experience</h1>
     		</div>
     		<hr>	<!-- This <hr> doesn't display! -->
     		<div class="col-12">
     			<p class="lead">
-            Over the years, I've held a variety of posistions.  I took each one
-            as an opportunity to improve my leadership ability and lead my team
-            to success.
+            Over the years, I've held a variety of leadership posistions and worked
+            on a diverse set of projects.
     			</p>
     		</div>
+
+        <div class="row welcome text-center">
+          <div class="col-12">
+            <h3>Leadership</h3>
+          </div>
+        </div>
 
         <!-- USLI -->
         <div class="row padding leadership">
@@ -285,8 +438,6 @@
               <dd>May 2017</dd>
               <dt>Senior Patrol Leader</dt>
               <dd>2015 - 2016 Scouting Year</dd>
-              <dt>Order of the Arrow: Brother</dt>
-              <dd><span style="background-color: #FFFF00"><b>###</b></span></dd>
             </dl>
             <p class="text-justify">
               I had been participating in scouting since I was a child.  Because
@@ -334,79 +485,155 @@
           </div>
         </div>
 
+        <div class="row welcome text-center">
+          <div class="col-12">
+            <h3>Featured Work</h3>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+
+          <!-- Busek -->
+          <div class="modal fade" id="Busek-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Busek Co. Inc.</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-justify">
+                    Busek is a small research company in Natick, Massachusets, which
+                    develops electric propulsion and other systems for spacecraft.
+                    My internship was split between working with the design group
+                    and the electrical engineering group.
+                  </p>
+                  <p class="text-justify">
+                    In the design group, I primarily worked to revise Solidworks
+                    parts, drawrings, and assemblies working with other engineers
+                    and with vendors.  In addition, I also created spreadsheets in
+                    Excel for inventory tracking and built an electrical filter for
+                    use in a test setup.  I completed my planned work in the design
+                    group one month ahead of schedule.
+                  </p>
+                  <p class="text-justify">
+                    In the electrical engineering group I worked to improve the
+                    company's PCB prototyping process.  I wrote procedures to encompass
+                    the full process which included, exporting designs from Eagle,
+                    CNC milling, applying soldermask, and tinning.  In addition, I
+                    also designed and fabricated an aluminum vacuum chuck to hold
+                    down stock for milling PCBs.  This significantly reduced the amount
+                    of time spent securing stock and prevented it from warping.  I
+                    also coded a data aquisistion and visualization Python program.  It
+                    connects to a current meter over ethernet and records, plots,
+                    and does basic analysis on data.  Finally, I populated circuit
+                    boards that were used by the testing group.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+      			<div class="card">
+      				<img class="card-img-top" src="img/FireBot.jpg">
+      				<div class="card-body">
+      					<h3 class="card-title">Aerospace Engineering Intern</h3>
+                <h5>Busek Co. Inc.</h5>
+      					<p class="card-text">
+                  Revision of Solidworks parts, assemblies, and drawrings,
+                  <abbr title="Printed Circuit Board">PCB</abbr> prototyping, small
+                  scale CNC milling, and
+                  Python <abbr title="Graphical User Interface">GUI</abbr>.
+      					</p>
+                <div class="collapse" id="busek">
+                  <div class="container-fluid padding">
+                    <p class="text-justify">
+                      Busek is a small research company in Natick, Massachusets, which
+                      develops electric propulsion and other systems for spacecraft.
+                      My internship was split between working with the design group
+                      and the electrical engineering group.
+
+                    </p>
+                    <p class="text-justify">
+                      In the design group, I primarily worked to revise Solidworks
+                      parts, drawrings, and assemblies working with other engineers
+                      and with vendors.  In addition, I also created spreadsheets in
+                      Excel for inventory tracking and built an electrical filter for
+                      use in a test setup.  I completed my planned work in the design
+                      group one month ahead of schedule.
+                    </p>
+                    <p class="text-justify">
+                      In the electrical engineering group I worked to improve the
+                      company's PCB prototyping process.  I wrote procedures to encompass
+                      the full process which included, exporting designs from Eagle,
+                      CNC milling, applying soldermask, and tinning.  In addition, I
+                      also designed and fabricated an aluminum vacuum chuck to hold
+                      down stock for milling PCBs.  This significantly reduced the amount
+                      of time spent securing stock and prevented it from warping.  Finally,
+                      I coded a data aquisistion and visualization Python program.  It
+                      connects to a current meter over ethernet and records, plots,
+                      and does basic analysis on data.
+                    </p>
+                  </div>
+                </div>
+      					<a id="busek-btn" data-toggle="modal" href="#Busek-Modal"
+                class="btn btn-outline-secondary" role="button">
+                  Read More
+                </a>
+
+      				</div>
+      			</div>
+      		</div>
+        </div>
+
+
+        <div class="row justify-content-center">
+          <div class="modal fade" id="sl1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Busek Co. Inc.</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-justify">
+                    Busek is a small research company in Natick, Massachusets, which
+                    develops electric propulsion and other systems for spacecraft.
+                    My internship was split between working with the design group
+                    and the electrical engineering group.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+      			<div class="card">
+      				<img class="card-img-top" src="img/FireBot.jpg">
+      				<div class="card-body">
+      					<h3 class="card-title">Aerospace Engineering Intern</h3>
+                <h5>Busek Co. Inc.</h5>
+      					<p class="card-text">
+                  Revision of Solidworks parts, assemblies, and drawrings,
+                  <abbr title="Printed Circuit Board">PCB</abbr> prototyping, and
+                  Python <abbr title="Graphical User Interface">GUI</abbr>.
+      					</p>
+      					<a id="sl1-btn" data-toggle="modal" href="#sl1"
+                class="btn btn-outline-secondary" role="button">
+                  Read More
+                </a>
+      				</div>
+      			</div>
+      		</div>
+
+
+
+        </div>
+
     	</div>
-    </div>
-
-
-    <hr class="light-100">
-
-    <!-- Experience -->
-    <div id="Experience" class="container-fluid padding">
-      <div class="row welcome text-center">
-        <div class="col-12">
-          <h1 class="display-4">Experience</h1>
-        </div>
-        <hr>	<!-- This <hr> doesn't display! -->
-        <div class="col-12">
-          <p class="lead">
-            Asside from my leadership positions, I have worked on a variety of
-            projects and in many different work environments.  My diverse experiences
-            demonstrate my ability to adapt to unexpected challenges.
-          </p>
-        </div>
-      </div>
-
-      <div class="row" id="exp1">
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-    			<div class="card">
-    				<img class="card-img-top" src="img/FireBot.jpg">
-    				<div class="card-body">
-    					<h3 class="card-title">Aerospace Intern</h3>
-              <h5>Busek Co. Inc.</h5>
-    					<p class="card-text">
-                Revision of Solidworks parts, assemblies, and drawrings,
-                <abbr title="Printed Circuit Board">PCB</abbr> prototyping, and
-                Python <abbr title="Graphical User Interface">GUI</abbr>.
-    					</p>
-    					<a data-toggle="collapse" href="#busek"
-              class="btn btn-outline-secondary" role="button">
-                Read More
-              </a>
-    				</div>
-    			</div>
-    		</div>
-
-        <div class="collapse" id="busek" data-parent="#exp1">
-          <div class="container-fluid padding">
-            <p class="text-justify">
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-            </p>
-          </div>
-        </div>
-
-        <div class="collapse" id="IQP" data-parent="#exp1">
-          <div class="container-fluid padding">
-            <p class="text-justify">
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-              afdslj alskjdf; akjlsdf aslkfj; sadfjlkj asdlk askjslafjl;kfsadj
-            </p>
-          </div>
-        </div>
-
-
-      </div>
     </div>
 
   <!-- Footer -->
@@ -449,7 +676,7 @@
             <hr class="light">
             <h5>Sources</h5>
             <hr class="light">
-              <ul>
+              <ul style="list-style: none;">
                 <li><sup>1</sup> : 6.49% of eligible scouts acheived the rank
                   <br>of Eagle in 2018 according to
                 <a target="_blank" href="https://blog.scoutingmagazine.org/2019/02/20/eagle-scout-class-of-2018-a-comprehensive-look-at-the-numbers-behind-the-number/">
