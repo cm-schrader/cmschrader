@@ -207,13 +207,10 @@ hr.light-100 {
 .skill {
   transition: all .3s ease-in-out;
   color: #a2aaad;
-  z-index: 0;
-  position: relative;
 }
 .skill:hover {
   transform: scale(1.8);
   color: #a6192e;
-  z-index: -1;
 }
 
 /*---Media Queries --*/
