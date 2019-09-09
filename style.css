@@ -183,7 +183,7 @@ footer p {
 
 hr.light {
   border-top: 1px solid #a2aaad;
-  width: 37rem;
+  width: 37rem !important; 
   margin-top: .8rem;
   margin-bottom: 1rem;
 }
