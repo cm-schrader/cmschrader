@@ -51,6 +51,10 @@ p, h1, h2, h3, h4, h5, h6 {
     float: left;
 }
 
+.center {
+    text-align: center;
+}
+
 .circle {
     border-radius: 15%;
     box-shadow: 10px 10px 15px #ccc;
@@ -174,4 +178,9 @@ footer {
     vertical-align: middle;
     filter: brightness(0) invert(1);
     transition: all .5s;
+}
+
+.four-o-four {
+    text-align: center;
+    font-size: 10rem;
 }
