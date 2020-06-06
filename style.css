@@ -123,10 +123,15 @@ p, h1, h2, h3, h4, h5, h6 {
     list-style-type: none;
 }
 
+.flex-no-img {
+    margin-left: 25%;
+}
+
 /* Navbar Style */
 .navbar {
     background-color: #00539C;
     overflow: hidden;
+    box-shadow: 10px 10px 15px #ccc;
 }
 
 .navbar a {
@@ -158,6 +163,7 @@ footer {
     color: #f2f2f2;
     background-color: #00539C;
     margin: 0;
+    box-shadow: 10px 10px 15px #ccc;
 }
 
 .sticky {
@@ -183,4 +189,21 @@ footer {
 .four-o-four {
     text-align: center;
     font-size: 10rem;
+}
+
+.gpa {
+    position: relative;
+    text-align: center;
+}
+
+.gpa-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #00539C; 
+    transform: translate(-50%, -50%);
+  }
+
+.list li {
+    list-style-type: disc;
 }
