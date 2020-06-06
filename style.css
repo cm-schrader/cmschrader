@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+/* General Style */
+html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  /* background-color: #ffffff; */
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    display: block;
+    background-color: #00539C;
+    color: #f2f2f2;
+    border-radius: 5px;
+    border: 2;
+    border-color: #00539C;
+    padding: 5px 10px;
+    transition: all .5s;
+}
+
+button:hover {
+    background-color: white;
+    color: rgb(0, 106, 199);
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 8px 25%;
+}
+
+/* Utility Classes */
+.link {
+    transition: text-decoration 1s;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.img-left {
+    margin: 8px 3% 8px 25%;
+    float: left;
+}
+
+.circle {
+    border-radius: 15%;
+    box-shadow: 10px 10px 15px #ccc;
+}
+
+.small {
+    height: 8rem;
+}
+
+.large-br {
+    padding-top: 100px;
+}
+
+.medium-br {
+    padding-top: 50px;
+}
+
+.small-br {
+    padding-top: 20px;
+}
+
+.tiny-br {
+    padding-top: 10px;
+}
+
+/* Header Styles */
+.title {
+    margin: 25px 25% 5px;
+}
+
+.subtitle {
+    color: #444;
+    margin: 5px 25% 5px;
+}
+
+/* Flex Grid */
+.flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px 10%;
+}
+
+.flex-card {
+    margin: 15px 0px;
+    align-items: flex-start;
+    flex: 2 50%;
+}
+
+.content {
+    display: block;
+}
+
+.flex-card p, .flex-card h2{
+    margin: 0 0 0 0px;
+
+}
+.flex-card img {
+    margin-left: 17.5%;
+}
+
+.flex-card button {
+    margin: 15px auto;
+}
+
+.flex-grid li {
+    list-style-type: none;
+}
+
+/* Navbar Style */
+.navbar {
+    background-color: #00539C;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 15px;
+    transition: all .5s;
+}
+
+.navbar a:hover {
+    background-color: #f2f2f2;
+    color: rgb(0, 106, 199);
+}
+
+.navbar a.active {
+    background-color: rgb(0, 106, 199);
+    color: white;
+}
+
+.navbar a.active:hover {
+    background-color: #f2f2f2;
+    color: rgb(0, 106, 199);
+}
+
+footer {
+    text-align: center;
+    color: #f2f2f2;
+    background-color: #00539C;
+    margin: 0;
+}
+
+.sticky {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.foot span {
+    border: 20px;
+}
+
+.linkedin {
+    height: 25px; 
+    margin-right:20px;
+    margin-top: 0px;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
+    transition: all .5s;
+}
