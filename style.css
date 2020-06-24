@@ -124,11 +124,6 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0 20px 0 0px;
 }
 
-.flex-card p,
-{
-    
-}
-
 .flex-card img {
     margin-left: 17.5%;
 }
@@ -149,16 +144,27 @@ p, h1, h2, h3, h4, h5, h6 {
 .navbar {
     background-color: #00539C;
     overflow: hidden;
-    box-shadow: 10px 10px 15px #ccc;
+    box-shadow: 0px 10px 15px #22222233;
 }
 
 .navbar a {
-    float: left;
+    float: right;
     color: #f2f2f2;
     text-align: center;
-    padding: 10px 16px;
+    padding: 12px 16px;
     font-size: 15px;
     transition: background-color .5s color .5s;
+}
+
+#brand {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+#brand:hover {
+    background-color: #00539C;
+    color: #f2f2f2;
 }
 
 .navbar a:hover {
@@ -177,18 +183,23 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 footer {
-    text-align: center;
+    padding-left: 5rem;
     color: #f2f2f2;
     background-color: #00539C;
     margin: 0;
-    box-shadow: 10px 10px 15px #ccc;
+    box-shadow: 0px -10px 15px #22222233;
+}
+
+.right-foot {
+    float: right;
+    padding-right: 5rem;;
 }
 
 .sticky {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
+    width: 96%;
 }
 
 .foot span {
