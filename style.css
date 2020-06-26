@@ -24,6 +24,7 @@ button {
     border-radius: 5px;
     border: 2;
     border-color: #00539C;
+    margin: 10px;
     padding: 5px 10px;
     transition: all .5s;
 }
@@ -50,6 +51,11 @@ p, h1, h2, h3, h4, h5, h6 {
 .img-left {
     margin: 8px 3% 8px 25%;
     float: left;
+}
+
+.img-mid {
+    float: left;
+    margin: 8px 1% 8px 25%;
 }
 
 .img-right {
@@ -120,7 +126,11 @@ p, h1, h2, h3, h4, h5, h6 {
     display: flex;
 }
 
-.flex-card p, .flex-card h2, .flex-card h3{
+.flex-mid-card {
+    margin-top: 30px;
+}
+
+.flex-card p, .flex-card h2, .flex-card h3, .flex-card h5 {
     margin: 0 20px 0 0px;
 }
 
@@ -128,16 +138,35 @@ p, h1, h2, h3, h4, h5, h6 {
     margin-left: 17.5%;
 }
 
-.flex-card button {
-    margin: 15px auto;
+.flex-mid-card p, .flex-mid-card h2, .flex-mid-card h3, .flex-card h5 {
+    margin: 0 0 0 25%;
+    padding: 0;
 }
+
+.flex-mid-card button {
+    margin-left: 20%;
+}
+
+.flex-mid-card p {
+    max-width: 50%;
+}
+
+
+.flex-card p, .flex-card h2, .flex-card h3, .flex-card h5{
+    margin: 0 0px 0 10px;
+}
+
 
 .flex-grid li {
     list-style-type: none;
 }
 
-.flex-no-img {
-    margin-left: 25%;
+.no-img {
+    margin-left: 20%;
+}
+
+.flex-no-img .flex-card {
+    max-width: 40%;
 }
 
 /* Navbar Style */
@@ -183,7 +212,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 footer {
-    padding-left: 5rem;
+    padding-left: 7rem;
     color: #f2f2f2;
     background-color: #00539C;
     margin: 0;
@@ -192,7 +221,7 @@ footer {
 
 .right-foot {
     float: right;
-    padding-right: 5rem;;
+    padding-right: 7rem;;
 }
 
 .sticky {
@@ -232,6 +261,10 @@ footer {
     color: #00539C; 
     transform: translate(-50%, -50%);
   }
+
+.list {
+    margin-left: 25%;
+}
 
 .list li {
     list-style-type: disc;
