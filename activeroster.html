@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.M. Schrader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.html" id="brand">
+            <h1 style="margin: 0 30px;">Christian M. Schrader</h1>
+        </a>
+        <a href="resume.html">Resume</a>
+        <a href="education.html">Education</a>
+        <a href="experience.html" class="active">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="index.html">Home</a>
+    </div>
+
+    <!-- CONTENT BEGIN -->
+    <div class="large-br" />
+    <span class=>
+        <img src="img/activeroster.png" alt="ActiveRoster" class="img-left medium circle">
+        <h1 class="title">ActiveRoster</h1>
+        <h3 class="subtitle">Written Summer of 2019</h3>
+        <p class="caption" style="text-align: left;">Pictured: The main UI window of Active Roster.
+        </p>
+    </span>
+    <div class="large-br"></div>
+    <p>When I was elected as Captain of USLI, one of the things I wanted to do was create a better system for tracking
+        member attendance on the team. While the team had a criteria for who qualifies as an active member, it was hard
+        to tell who met them and subsequently it was hard to tell the exact size of the team along with who qualifies to
+        attend competition. I wasn't interested in managing a massive spreadsheet tracking every event, so I did some
+        research. As is often the case, I didn't find any software that was an <i>exact</i> match for what I was looking
+        for so I decided to take it on as a summer project.</p>
+    <p>The end result was ActiveRoster, a Python program designed to track members attendance at USLI events and
+        automatically determine their member status. Despite there being a couple bugs when I rolled it out at the
+        beggining of the year, they were soon fixed and it was able to do its job effetivley.</p>
+    <p>I learned a lot in the process. In order to sync between computers, it utilized a cloud database, the first time
+        I had done so. I also learned about distributing Python programs, which was more difficult than I expected.</p>
+    <p>In the time since writting it, I've learned more and reflected on ActiveRoster. In retrospect, my implimentation
+        of the database didn't follow best practices and the GUI also looks somewhat dated which was a somewhat
+        inevitable
+        effect of using the Tkinter Library. I hope to eventually find time go back and revisit the program.
+    </p>
+    <!-- <a class="link-btn center-btn" href="firebot.html">Github</a> -->
+    <!-- CONTENT END -->
+    <div class="medium-br"></div>
+
+    <!-- Footer -->
+    <footer class="sticky">
+        <div class="tiny-br" />
+        <span class="foot">
+            <a href="https://www.linkedin.com/in/c-m-schrader" target="_blank">
+                <img src="img/linkedin.png" alt="Linked-In" class="linkedin">
+            </a>
+            <a href="https://github.com/cm-schrader" target="_blank">
+                <img src="img/github.png" alt="Github" class="linkedin">
+            </a>
+            <a href="mailto:cms@cmschrader.com" target="_blank">
+                <img src="img/email.png" alt="Email" class="linkedin">
+            </a>
+        </span>
+        <div class="right-foot">
+            &copy; Christian Maximilian Schrader 2020
+        </div>
+        <div class="tiny-br" />
+    </footer>
+</body>
+
+</html>

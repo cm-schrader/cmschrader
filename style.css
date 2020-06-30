@@ -17,21 +17,30 @@ a {
     text-decoration: none;
 }
 
-button {
+.link-btn {
+    text-align: center;
+    font-size: 13px;
     display: block;
     background-color: #00539C;
     color: #f2f2f2;
     border-radius: 5px;
     border: 2;
     border-color: #00539C;
+    border-style: solid;
+    border-width: 2px;
     margin: 10px;
     padding: 5px 10px;
+    width: 80px;
     transition: all .5s;
 }
 
-button:hover {
+.link-btn:hover {
     background-color: white;
     color: rgb(0, 106, 199);
+}
+
+.center-btn {
+    margin: auto auto;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -73,12 +82,31 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .circle {
-    border-radius: 15%;
+    border-radius: 30px;
     box-shadow: 10px 10px 15px #ccc;
 }
 
 .small {
     height: 8rem;
+}
+
+.medium {
+    height: 12rem;
+}
+
+.large {
+    height: 16rem;
+    display: block;
+    margin: auto auto;
+}
+
+.caption {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    font-style: italic;
+    font-size: 13px;
+    max-width: 30%;
 }
 
 .large-br {
@@ -270,7 +298,7 @@ footer {
     list-style-type: disc;
 }
 
-#resume {
+.document {
     width: 100%;
     height: 55rem;
 }
