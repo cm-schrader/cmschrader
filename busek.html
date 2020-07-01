@@ -61,6 +61,14 @@
         This is quicker and essier than using double sided tape, wastes no materials, and doesn't damage the board. Last
         I heard, it is still in use and has made working with the mill much essier.
     </p>
+    <h5 id="current">Current Meter Reader</h5>
+    <p>One of the other two interns was working on a current meter specifically designed for some hardware tests other
+        engineers needed to run. I was assigned to create an desktop program to interface with it. I wrote a bit of C++
+        on the firmware side to send the data that was read over ethernet. From there, I created a desktop application
+        in Python to read the data and display it in real time. The gui library used was Tkinter along with Matplotlib
+        for graphing. Multithreading was used to manage the receiving of data from the current meter while
+        simsimultaneously graphing it. The program also had some other featuers such as the ability to export data,
+        compute linear regressions on the graph, and detect times of interest. </p>
     <!-- CONTENT END -->
     <div class="medium-br"></div>
 
