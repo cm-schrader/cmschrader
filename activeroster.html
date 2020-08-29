@@ -1,74 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>C.M. Schrader</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="img/favicon-32x32.png"
+            sizes="32x32"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C.M. Schrader</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
-</head>
-
-<body>
-    <div class="navbar">
-        <a href="index.html" id="brand">
-            <h1 style="margin: 0 30px;">Christian M. Schrader</h1>
-        </a>
-        <a href="resume.html">Resume</a>
-        <a href="education.html">Education</a>
-        <a href="experience.html" class="active">Experience</a>
-        <a href="skills.html">Skills</a>
-        <a href="index.html">Home</a>
-    </div>
-
-    <!-- CONTENT BEGIN -->
-    <div class="large-br" />
-    <span class=>
-        <img src="img/activeroster.png" alt="ActiveRoster" class="img-left medium circle">
-        <h1 class="title">ActiveRoster</h1>
-        <h3 class="subtitle">Written Summer of 2019</h3>
-        <p class="caption" style="text-align: left;">Pictured: The main UI window of Active Roster.
-        </p>
-    </span>
-    <div class="large-br"></div>
-    <p>When I was elected as Captain of USLI, one of the things I wanted to do was create a better system for tracking
-        member attendance on the team. While the team had a criteria for who qualifies as an active member, it was hard
-        to tell who met them and subsequently it was hard to tell the exact size of the team along with who qualifies to
-        attend competition. I wasn't interested in managing a massive spreadsheet tracking every event, so I did some
-        research. As is often the case, I didn't find any software that was an <i>exact</i> match for what I was looking
-        for so I decided to take it on as a summer project.</p>
-    <p>The end result was ActiveRoster, a Python program designed to track members attendance at USLI events and
-        automatically determine their member status. Despite there being a couple bugs when I rolled it out at the
-        beginning of the year, they were soon fixed and it was able to do its job effectively.</p>
-    <p>I learned a lot in the process. In order to sync between computers, it utilized a cloud database, the first time
-        I had done so. I also learned about distributing Python programs, which was more difficult than I expected.</p>
-    <p>In the time since writing it, I've learned more and reflected on ActiveRoster. In retrospect, my implementation
-        of the database didn't follow best practices and the GUI also looks somewhat dated which was a somewhat
-        inevitable effect of using the Tkinter Library. I hope to eventually find time go back and revisit the program.
-    </p>
-    <!-- <a class="link-btn center-btn" href="firebot.html">Github</a> -->
-    <!-- CONTENT END -->
-    <div class="medium-br"></div>
-
-    <!-- Footer -->
-    <footer class="sticky">
-        <div class="tiny-br" />
-        <span class="foot">
-            <a href="https://www.linkedin.com/in/c-m-schrader" target="_blank">
-                <img src="img/linkedin.png" alt="Linked-In" class="linkedin">
+    <body>
+        <div class="navbar">
+            <a href="index.html" id="brand">
+                <h1 style="margin: 0 30px">Christian M. Schrader</h1>
             </a>
-            <a href="https://github.com/cm-schrader" target="_blank">
-                <img src="img/github.png" alt="Github" class="linkedin">
-            </a>
-            <a href="mailto:cms@cmschrader.com" target="_blank">
-                <img src="img/email.png" alt="Email" class="linkedin">
-            </a>
-        </span>
-        <div class="right-foot">
-            &copy; Christian Maximilian Schrader 2020
+            <a href="resume.html">Resume</a>
+            <a href="education.html">Education</a>
+            <a href="experience.html" class="active">Experience</a>
+            <a href="skills.html">Skills</a>
+            <a href="index.html">Home</a>
         </div>
-        <div class="tiny-br" />
-    </footer>
-</body>
 
+        <!-- CONTENT BEGIN -->
+        <div class="large-br" />
+        <span>
+            <img
+                src="img/activeroster.png"
+                alt="ActiveRoster"
+                class="img-left medium circle"
+            />
+            <h1 class="title">ActiveRoster</h1>
+            <h3 class="subtitle">Written Summer of 2019 (ActiveRoster)</h3>
+            <h3 class="subtitle">Written Summer of 2020 (ActiveRoster2)</h3>
+            <p class="caption" style="text-align: left">
+                Pictured: The main UI window of ActiveRoster.
+            </p>
+        </span>
+        <div class="medium-br"></div>
+        <h2>ActiveRoster</h2>
+        <p>
+            When I was elected as Captain of <a href="usli.html">HPRC</a>, one
+            of the things I wanted to do was create a better system for tracking
+            member attendance on the team. While the team had a criteria for who
+            qualifies as an active member, it was hard to tell who met them and
+            subsequently it was hard to tell the exact size of the team along
+            with who qualifies to attend competition. I wasn't interested in
+            managing a massive spreadsheet tracking every event, so I did some
+            research. As is often the case, I didn't find any software that was
+            an <i>exact</i> match for what I was looking for so I decided to
+            take it on as a summer project.
+        </p>
+        <p>
+            The end result was ActiveRoster, a Python program designed to track
+            members attendance at HPRC events and automatically determine their
+            member status. Once a member in the system, all they had to do was
+            swipe their student ID to be counted at an event. Despite there
+            being a couple bugs when I rolled it out at the beginning of the
+            year, they were soon fixed and it was able to do its job
+            effectively.
+        </p>
+        <p>
+            I learned a lot in the process. In order to sync between computers,
+            it utilized Google Firebase which was my first time using a cloud
+            database. I also learned about distributing Python programs, which
+            was more difficult than I expected.
+        </p>
+        <h2>ActiveRoster2</h2>
+        <p>
+            In the time since I wrote ActiveRoster, I learned more about
+            databases and <a href="agile.html">software engineering</a>. Looking
+            back, I've realized that the ActiveRoster database implementation
+            broke some best practice rules. There were also a few officers who
+            were reluctant to learn a new program. Because of this, and a couple
+            smaller items issues, I hoped to revisit the project.
+        </p>
+        <p>
+            As the team prepared for the 2020-21 competition year, we had to
+            transition to a virtual workflow. Because of this, swiping student
+            IDs was no longer an option. I decided to revisit the project to
+            create something that would accommodate this. I also wanted to
+            simplify the program. While packing a program with features has
+            taught me a lot about programing in the past, I've learned that
+            often times users just want something intuitive with well polished
+            core features.
+        </p>
+        <p>
+            The team was using MS Teams for video meetings, which is able to
+            generate attendance reports. I decided to, instead of managing my
+            own database of members, utilize these reports. This meant that in
+            writing the new program, I could completely eliminate the database.
+            Member credentials and check in were managed by MS Teams and the
+            reports were just stored on the team's file repository which had the
+            side affect of creating a simple workflow for officers.
+        </p>
+        <p>
+            In the end, ActiveRoster2 is only 124 lines of code, 91% smaller
+            than the original ActiveRoster. Offloading functionality to familiar
+            applications we already used helped to prevent users from being
+            overwhelmed by needing to learn a new program and prevented me from
+            "reinventing the wheel". Sometimes a compact and efficient design is
+            all you really need.
+        </p>
+        <div style="text-align: center">
+            <a
+                class="link-btn"
+                style="display: inline; align-content: center"
+                href="https://github.com/cm-schrader/ActiveRoster2"
+                target="_blank"
+                >ActiveRoster2 Code</a
+            >
+        </div>
+        <div class="medium-br"></div>
+        <!-- <a class="link-btn center-btn" href="firebot.html">Github</a> -->
+        <!-- CONTENT END -->
+        <div class="medium-br"></div>
+
+        <!-- Footer -->
+        <footer class="sticky">
+            <div class="tiny-br" />
+            <span class="foot">
+                <a
+                    href="https://www.linkedin.com/in/c-m-schrader"
+                    target="_blank"
+                >
+                    <img
+                        src="img/linkedin.png"
+                        alt="Linked-In"
+                        class="linkedin"
+                    />
+                </a>
+                <a href="https://github.com/cm-schrader" target="_blank">
+                    <img src="img/github.png" alt="Github" class="linkedin" />
+                </a>
+                <a href="mailto:cms@cmschrader.com" target="_blank">
+                    <img src="img/email.png" alt="Email" class="linkedin" />
+                </a>
+            </span>
+            <div class="right-foot">
+                &copy; Christian Maximilian Schrader 2020
+            </div>
+            <div class="tiny-br" />
+        </footer>
+    </body>
 </html>
