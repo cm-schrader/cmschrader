@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
 
 /* General Style */
 html {
-  height: 100%;
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-  color: #222;
-  /* background-color: #ffffff; */
+    height: 100%;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    color: #222;
+    /* background-color: #ffffff; */
 }
 
 body {
@@ -21,17 +21,17 @@ a {
     text-align: center;
     font-size: 13px;
     display: block;
-    background-color: #00539C;
+    background-color: #00539c;
     color: #f2f2f2;
     border-radius: 5px;
     border: 2;
-    border-color: #00539C;
+    border-color: #00539c;
     border-style: solid;
     border-width: 2px;
     margin: 10px;
     padding: 5px 10px;
     width: 80px;
-    transition: background-color .5s, color .5s, border-color .5s;
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 }
 
 .link-btn:hover {
@@ -43,7 +43,13 @@ a {
     margin: auto auto;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 8px 25%;
 }
 
@@ -68,7 +74,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .img-right {
-    margin: 8px 25% 8px 3% ;
+    margin: 8px 25% 8px 3%;
     float: left;
 }
 
@@ -106,7 +112,7 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
     font-style: italic;
     font-size: 13px;
-    max-width: 30%;
+    max-width: 40%;
 }
 
 .giant-br {
@@ -145,9 +151,9 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome {
-    background-size: cover; 
-    background-image: url('img/Rocket Test Launch.jpg'); 
-    margin:0;
+    background-size: cover;
+    background-image: url("img/PEANUT\ By\ Phobos.png");
+    margin: 0;
     background-attachment: fixed;
     /* background-position: center; */
     background-repeat: no-repeat;
@@ -155,24 +161,24 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-text {
-    margin-left: 30%;
+    margin-left: 10%;
     padding-top: 7%;
     margin-right: 0;
-    font-size: 5rem;
+    font-size: 4.8rem;
     max-width: 9999%;
     color: #f2f2f2;
-    text-shadow: 0px 10px 15px #22222233;
+    text-shadow: 0px 10px 15px #22222266;
     position: static;
 }
 
 .welcome-caption {
-    margin-left: 30%;
+    margin-left: 10%;
     padding-top: 10px;
     margin-right: 0;
-    font-size: 3rem;
+    font-size: 2.8rem;
     max-width: 9999%;
     color: #f2f2f2;
-    text-shadow: 0px 10px 15px #22222233;
+    text-shadow: 0px 10px 15px #22222266;
     position: static;
 }
 
@@ -203,7 +209,10 @@ p, h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 
-.flex-card p, .flex-card h2, .flex-card h3, .flex-card h5 {
+.flex-card p,
+.flex-card h2,
+.flex-card h3,
+.flex-card h5 {
     margin: 0 20px 0 0px;
 }
 
@@ -211,7 +220,10 @@ p, h1, h2, h3, h4, h5, h6 {
     margin-left: 17.5%;
 }
 
-.flex-mid-card p, .flex-mid-card h2, .flex-mid-card h3, .flex-card h5 {
+.flex-mid-card p,
+.flex-mid-card h2,
+.flex-mid-card h3,
+.flex-card h5 {
     margin: 0 0 0 25%;
     padding: 0;
 }
@@ -224,11 +236,12 @@ p, h1, h2, h3, h4, h5, h6 {
     max-width: 50%;
 }
 
-
-.flex-card p, .flex-card h2, .flex-card h3, .flex-card h5{
+.flex-card p,
+.flex-card h2,
+.flex-card h3,
+.flex-card h5 {
     margin: 0 0px 0 10px;
 }
-
 
 .flex-grid li {
     list-style-type: none;
@@ -244,7 +257,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Navbar Style */
 .navbar {
-    background-color: #00539C;
+    background-color: #00539c;
     overflow: hidden;
     box-shadow: 0px 10px 15px #22222233;
 }
@@ -255,7 +268,7 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
     padding: 12px 16px;
     font-size: 15px;
-    transition: background-color .5s color .5s;
+    transition: background-color 0.5s color 0.5s;
 }
 
 #brand {
@@ -265,7 +278,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #brand:hover {
-    background-color: #00539C;
+    background-color: #00539c;
     color: #f2f2f2;
 }
 
@@ -287,14 +300,14 @@ p, h1, h2, h3, h4, h5, h6 {
 footer {
     padding-left: 7rem;
     color: #f2f2f2;
-    background-color: #00539C;
+    background-color: #00539c;
     margin: 0;
     box-shadow: 0px -10px 15px #22222233;
 }
 
 .right-foot {
     float: right;
-    padding-right: 7rem;;
+    padding-right: 7rem;
 }
 
 .sticky {
@@ -315,12 +328,12 @@ footer {
 }
 
 .linkedin {
-    height: 25px; 
-    margin-right:20px;
+    height: 25px;
+    margin-right: 20px;
     margin-top: 0px;
     vertical-align: middle;
     filter: brightness(0) invert(1);
-    transition: all .5s;
+    transition: all 0.5s;
 }
 
 .four-o-four {
@@ -337,9 +350,9 @@ footer {
     position: absolute;
     top: 50%;
     left: 50%;
-    color: #00539C; 
+    color: #00539c;
     transform: translate(-50%, -50%);
-  }
+}
 
 .list {
     margin-left: 25%;
