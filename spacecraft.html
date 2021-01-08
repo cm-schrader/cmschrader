@@ -1,1 +1,122 @@
-<p>Hello there</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.M. Schrader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.html" id="brand">
+            <h1 style="margin: 0 30px;">Christian M. Schrader</h1>
+        </a>
+        <a href="resume.html">Resume</a>
+        <a href="education.html">Education</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html" class="active">Skills</a>
+        <a href="index.html">Home</a>
+    </div>
+
+    <!-- CONTENT BEGIN -->
+    <div class="large-br" />
+    <span class=>
+        <img src="img/PEANUT By Mars.png" alt="PEANUT Spacecraft" class="img-left medium circle">
+        <h1 class="title">Systems Engineering</h1>
+        <h3 class="subtitle">Managing Requirements and Constraints</h3>
+        <p class="caption" style="text-align: left;">Pictured: A render of PEANUT in its Mars science orbit. 
+        </p>
+    </span>
+    <div class="large-br"></div>
+    <p>
+        Rarely is an engineering challenge solved through a single mechanism or circuit.  Most vehicles require 
+        a number of structures, mechanisms, circuit boards, and firmware to meet the project requirements.  With 
+        so many variables, it is imperative to closely track and manage constraints like mass and cost.  These skills 
+        have been invaluble on many of my projects such as <a href="/usli.html">USLI</a> and <a href="/mqp.html">MQP</a>.
+    </p>
+    <p>
+        Beyond what I've written about in other pages, my holistic skill set is advantageous in systems engineering. 
+        Most engineering projects require the application of <a href="/mechanical.html">mechanical</a>, 
+        <a href="/pcb-design.html">electrical</a>, and <a href="/agile.html">software</a> design, all of which I have 
+        experience in.  This is useful in understanding the needs and capabilities of each discipline as well as how they
+        come together to form a complete system.  
+    </p>
+    <h5>Spacecraft and Mission Design</h5>
+    <p>
+        Spacecraft and Mission Design (SMAD) is one of the final courses taken by astronautical engineers at WPI and it 
+        pulls together and builds upon many other courses.  It is most notable though, for the term project where student teams
+        design a spacecraft to complete a set mission.  Systems engineering is critical to manage the numerous subsystems while 
+        keeping mass low.
+    </p>    
+    <img src="img/PEANUT By Phobos.png" alt="PEANUT by Phobos" class="circle large">
+    <p class="caption">An artistic render showing PEANUT in its Phobos trailing orbit.</p>
+    <p>
+        The mission we had to design had to fly to Mars and capture into a 500 km circular orbit.  After a brief 30 sol science period,
+        the spacecraft would then maneuver into a Phobos trailing orbit where it would spend the rest of its mission in a 670 sol science 
+        period.  The primary payload was the <a target="_blank" href="https://mars.nasa.gov/mro/mission/instruments/hirise/">HiRISE</a> camera which our
+        craft would use to image Mars and Phobos.  Aside from the payload and a couple set components like the high and low gain antennas, the team
+        had to select what we would use for other subsystems.  This required a number of trade studies to compare technologies for components like the 
+        propulsion and power systems.
+    </p>
+    <img src="img/plumes.png" alt="ACS System Thruster Plumes" class="circle large">
+    <p class="caption">To ensure the <acronym title="Attitude Control System">ACS</acronym> thruster plumes (shown as red cones) 
+        didn't impinge on any components, we placed the thrusters on carefully placed booms.</p>
+    <p>
+        Me and my three teammates designed PEANUT to accomplish the mission.  We opted for electric propulsion, specifically the 
+        <a href="https://www1.grc.nasa.gov/space/sep/gridded-ion-thrusters-next-c/#factsheets">NEXT-C</a> ion engine, to minimize 
+        our mass at the expense of a longer overall mission lifetime.  We also used electric propulsion, in this case pulsed plasma thrusters,
+        for our attitude control system in addition to a reaction wheel to ensure we met our requirements for maximum slew time.  
+        As a team, we made many similar decisions for aspects like battery and solar panel technology as well as thruster placement and launch vehicle
+        in order to balance the many performance parameters of the system.
+    </p>
+    <p>
+        I contributed to the team by doing all of the 3D modeling for the spacecraft in <a href="/solidworks.html">Solidworks</a>.
+        This was important to ensuring all of our subsystems would actually fit within the vehicle and that the whole thing would 
+        fit into the Falcon-9.  This was also used to estimate the vehicle's moment of inertia which was important for designing the   
+        <acronym title="Attitude Control System">ACS</acronym>.  I also did the maneuver planing.  The initial analysis made the assumption
+        that the manuevers were impulsive which gave a good baseline for what we could expect for the required 
+        <acronym title="Total Change in Velocity">Delta V</acronym> for the mission.  After we decided on electric propulsion, I had to update 
+        the mission plan to use low-thrust, rather than impulsive, manuevers.  The mission plan allowed us to determine fuel tank sizes as well
+        as our total mission lifetime and thruster on time to ensure all our systems had rated lifetimes longer than that.
+    </p>
+    <img src="img/PEANUT in Falcon.png" alt="Falcon 9 Payload Fairing" class="circle large">
+    <p class="caption">A picture of PEANUT sitting within the payload volume of the Falcon 9's fairing.</p>
+    <p>
+        In the end, the mission was a success.  We met all the project requirements.  The vehicle was light enough that it could 
+        be launched directly into a Hohmann transfer orbit to Mars by the Falcon 9 in its 
+        <acronym title="Autonomous Spaceport Drone Ship">ASDS</acronym> landing configuration which allows
+        for significant cost savings compared with the Atlas V (511 configuration), our second choice.  
+    </p>
+    <div class="small-br"></div>
+    <div style="text-align: center;">
+        <a class="link-btn" target="_blank" style="display: inline; align-content: center;" href="/doc/PEANUT Presentation.pdf">PEANUT Presentation</a>
+    </div>
+    <div class="medium-br"></div>
+    <!-- CONTENT END -->
+    <div class="medium-br"></div>
+
+    <!-- Footer -->
+    <footer class="sticky">
+        <div class="tiny-br" />
+        <span class="foot">
+            <a href="https://www.linkedin.com/in/c-m-schrader" target="_blank">
+                <img src="img/linkedin.png" alt="Linked-In" class="linkedin">
+            </a>
+            <a href="https://github.com/cm-schrader" target="_blank">
+                <img src="img/github.png" alt="Github" class="linkedin">
+            </a>
+            <a href="mailto:cms@cmschrader.com" target="_blank">
+                <img src="img/email.png" alt="Email" class="linkedin">
+            </a>
+        </span>
+        <div class="right-foot">
+            Copyright &copy; Christian M. Schrader <script>document.write(new Date().getFullYear())</script>
+        </div>
+        <div class="tiny-br" />
+    </footer>
+</body>
+
+</html>
