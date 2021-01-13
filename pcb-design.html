@@ -25,26 +25,35 @@
     <div class="large-br" />
     <span class=>
         <img src="img/carbon.jpg" alt="Carbon Altimeter" class="img-left medium circle">
-        <h1 class="title">Printed Circuit Board Design</h1>
-        <h3 class="subtitle">Microcontroller Boards and Light Weight Avionics</h3>
+        <h1 class="title">Embedded Systems</h1>
+        <h3 class="subtitle">Firmware and Printed Circuit Board Design</h3>
         <p class="caption" style="text-align: left;">Pictured: The bottom of my prototype flight computer, Carbon-X1.
             The STM32 that powers it can be seen in the center.
         </p>
     </span>
     <div class="medium-br"></div>
+    
+    <h3>Printed Circuit Board</h3>
     <p>Printed circuit boards allow complex electrical systems to be built on a compact and light weight board. Like
         many other engineers, my first experience with electrical systems was with Arduino. While it is an excellent way
         to learn, you can only get so far using a bread board.</p>
-    <p>My first experiences with printed circuit boards happened as part of my work at Busek. As part of my work in the
+    <p>My first experiences with printed circuit boards happened as part of my work at <a href="/busek.html">Busek</a>. 
+        As part of my work in the
         Electrical Group, I learned Eagle and the basics of LTspice. While I designed a few simple boards, most of my
         work focused on their construction. Through building quite a few myself, I picked up not only soldering and
         reflow skills, but also knowledge of how PCBs are built and the technology behind them.
     </p>
-    <div class="small-br"></div>
-    <div style="text-align: center;">
-        <a class="link-btn" style="display: inline; align-content: center;" href="/busek.html">PCB at Busek</a>
-    </div>
-    <div class="small-br"></div>
+    <h3>Firmware</h3>
+    <p>
+        While there are many tasks that can be accomplished just by a circuit, many applications require the use of 
+        microcontrollers to execute code.  This creates a huge number of possibilities ranging from interfacing with 
+        computers to implementing real time <a href="/gnc.html">GNC algorithms</a>. With few exceptions, embedded systems 
+        are programed in <a href="/c.html">C or C++</a>.  I have experience programing in two environments, those being
+        the popular Arduino environment, which I used on projects like my heat seeking robot at 
+        <a href="/nasa-ames.html">NASA Ames</a>, as well as CMSIS, which I've been using primarily with my flight computer.
+        My projects range in complexity from running simple polling loops to the real time operating systems used in 
+        aerospace.
+    </p>
     <h3>Flight Computer</h3>
     <p>For a while, I went back to using dev boards like the Arduino and Teensy 3.2. In Spring of 2020 I decided to
         start
@@ -56,9 +65,9 @@
     <p class="caption">The layout of Carbon-X1. Note, copper fills have been hidden for legibility.</p>
     <p>Using a variety of datasheets and educational resources, I was able to design Carbon-X1, a new flight computer
         powered by an STM32, a popular 32 bit microcontroller. I finished assembly and board diagnostics which
-        has demonstrated that my design functions well. I will eventually write
-        a page about this project, but in the meantime, you can see the firmware repository on
-        <a href="https://github.com/cm-schrader/Nucleon" target="blank">Github</a>.
+        has demonstrated that my design functions well. My current task is writing firmware which you can see on 
+        <a href="https://github.com/cm-schrader/Nucleon" target="blank">Github</a>.  I'm utilizing CMSIS, HAL, and 
+        FreeRTOS to design a robust and fault tolerant system.
     </p>
     <!-- CONTENT END -->
     <div class="medium-br"></div>
