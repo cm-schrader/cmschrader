@@ -24,17 +24,53 @@
     <!-- CONTENT BEGIN -->
     <div class="large-br" />
     <span class=>
-        <img src="img/PEANUT By Mars.png" alt="PEANUT Spacecraft" class="img-left medium circle">
+        <img src="img/arm.jpg" alt="Controlled Propeller Arm" class="img-left medium circle">
         <h1 class="title">Guidance, Navigation, and Control</h1>
-        <h3 class="subtitle">PLACE HOLDER</h3>
-        <p class="caption" style="text-align: left;">Pictured: A render of PEANUT in its Mars science orbit. 
+        <h3 class="subtitle">Predicting and Controlling Vehicle Dynamics.</h3>
+        <p class="caption" style="text-align: left;">Pictured: An arm with a propeller on it that I designed my first PID controller for. 
         </p>
     </span>
     <div class="large-br"></div>
-    <p>wots gnc</p>
+    <p>
+        Guidance, Navigation, and Control, often times abbreviated as GNC, is a discipline within aerospace engineering that involves predicting
+        and controlling vehicle dynamics.  Guidance involves determining the desired behavior, typically picking your flight path.  Navigation is
+        the determination of the current state of the vehicle.  Lastly, control involves determining what actions the vehicle needs to take given
+        its current state to follow the desired flight path.  Modern GNC algorithms often rely on computational math and are often simulated in 
+        scientific computing languages like <a href="/python.html">Python</a> and <a href="/matlab.html">MATLAB</a>.  They are often implemented on
+        <a href="/pcb-design.html">embedded systems</a> to control vehicles enabling things like autopilot and fly-by-wire.
+    </p>
+    <p>
+        As my favorite discipline within aerospace engineering, I've taken a number of courses in this subject.  Most notably, the course Guidance, 
+        Navigation, and Communication as well as Spacecraft Dynamics and Control.  By the end of this school year, I will have completed my last undergraduate 
+        course in the subject, Aircraft Dynamics and Control, and some graduate courses like Optimal Control and Applied Machine Learning.    
+    </p>
+    <h5>Dynamics</h5>
+    <p>
+        More often then not, the motion of dynamical systems like spacecraft cannot be described with simple functions.  Typically, these systems are modeled
+        using systems of differential equations that, in many situations, are non-linear.  These are impossible to solve with algebra and require the use of
+        numerical solvers.  Throughout many of my courses, I've built dynamical simulators to model systems from differential drive robots to rockets.  I've used 
+        a variety of tools for this such as <a href="/matlab.html">MATLAB's</a> built in ODE solvers as well as algorithms I've implemented myself like RK4 and RKF45.
+    </p>
+    <h4 class="center">ODE Solver Implementations</h4>
+    <div style="text-align: center;">
+        <a class="link-btn" style="display: inline; align-content: center;" href="/doc/rk4.m">RK4</a>
+        <a class="link-btn" style="display: inline; align-content: center;" href="/doc/rkf45.m">RKF45</a>
+    </div>
     <h5>Kalman Filter</h5>
-    <h5>Control Theory</h5>
-    <h5>Astronautics</h5>
+    <p>
+        One of the primary challenges of navigation is that real sensors don't produce perfect data.  There is always some noise that, if not accounted for, can
+        throw control algorithms way off.  Much of my experience working with navigation has been in my GNC course, primarily designing Kalman filters.  The Kalman
+        filter is a state estimation algorithm that fuses multiple noisy sensor readings and a mathematical model of the system and was first implemented on the 
+        Apollo Guidance Computer.  There are other variants of the filter that address different types of systems such as the extended Kalman filter (EKF) which
+        is used for nonlinear dynamical systems that the regular Kalman filter doesn't work on.
+        Over the course of my GNC class, I implemented various kalman filters in <a href="/matlab.html">MATLAB</a>
+        ranging from simple ones for estimating the state of a particle moving in one dimension
+        to an EKF to estimate the flight path of an airplane in 3D space using <a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS84</a>.
+    </p>
+    <img src="img/EKF.png" alt="Extended Kalman filter" class="large" style="height: 25rem;">
+    <p class="caption">A graph showing the results of an extended Kalman filter I implemented for an aircraft.  While both the real flight path (the ground truth) 
+        and the path estimated by the EKF are graphed, they appear as one because of just how accurate the EKF's estimates are. 
+    </p>
     <!-- CONTENT END -->
     <div class="medium-br"></div>
 

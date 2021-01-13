@@ -1,3 +1,5 @@
+% Christian M. Schrader
+
 function x = rk4(xdot, x_initial, t0, tf, dt)
 %RK4 Fourth order Runge-Kutta 
 %   x_dot:      Statespace function derivative
