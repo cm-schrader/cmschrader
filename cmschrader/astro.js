@@ -42,10 +42,20 @@ export class Body {
             this.parent.children.push(this)
         }
 
-        this.geometry = new THREE.SphereGeometry(1, 16, 8)
-        this.material = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
-        this.mesh = new THREE.Mesh(this.geometry, this.material)
-        scene.add(this.mesh)        
+        this.markerGeometry = new THREE.SphereGeometry(1, 8, 4)
+        this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
+        this.markerMesh = new THREE.Mesh(this.markerGeometry, this.markerMaterial)
+        scene.add(this.markerMesh)   
+
+        this.realGeometry = new THREE.SphereGeometry(1, 32, 16)
+        this.realMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
+        this.realMesh = new THREE.Mesh(this.realGeometry, this.realMaterial)
+        scene.add(this.realMesh)      
+        
+        
+        // const focusOnBody = (ev) => {setFocus(this)}
+        // this.markerMesh.on('click', focusOnBody);
+        // this.realMesh.on('click', focusOnBody);
     }
 
     // Gravitational Constant
@@ -76,13 +86,36 @@ export class Body {
     }
 
     update(focus) {
-        if (true) { // If object is visible in general (place marker) or in local space (place real model)
-            this.mesh.position.copy(transform(sv2r(this.stateVector), focus))
-            this.mesh.scale.copy(new THREE.Vector3(this.radius / scale, this.radius / scale, this.radius / scale))
-            // Draw orbit
+        var visualRadius = this.radius / scale
+        if (false) {    // Object Hidden
+            this.markerMesh.visible = false;
+            this.realMesh.visible = false;
         }
-        // Update children
+        else if (visualRadius < 0.01) {  // Marker Mesh
+            this.markerMesh.visible = true;
+            this.realMesh.visible = false;
+            this.markerMesh.position.copy(transform(sv2r(this.stateVector), focus))
+        }
+        else {  // Visible in local space
+            this.markerMesh.visible = false;
+            this.realMesh.visible = true;
+            this.realMesh.position.copy(transform(sv2r(this.stateVector), focus))
+            this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
+        }
+
+        // this.children.forEach(child => {
+        //     if (child !== null) child.update()
+        // })
     }
+}
+
+function setFocus(newFocus) {
+    console.log("Focus on " + newFocus.name)
+    focus = newFocus // TODO make focus position so you can lerp, bonus, make it async lerp to something
+}
+
+function setScale(newScale) {
+    scale = newScale
 }
 
 //https://www.cs.uaf.edu/2013/spring/cs493/lecture/01_24_vectors.html
@@ -105,6 +138,5 @@ function transform(point, focus)
     }
     focusSV = v3sub(point, focusSV)
     focusSV.multiplyScalar(1/scale)
-    console.log(focusSV)
     return focusSV
 }
