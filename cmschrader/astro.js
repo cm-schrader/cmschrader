@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-
+import { matrix, multiply } from 'mathjs'
 
 export const Star = Symbol("Star")
 export const Planet = Symbol("Planet")
@@ -23,7 +23,7 @@ function deg2rad(deg) {
 
 export class Body {
     constructor(scene, name, parent, bodyType, radius, mass, 
-            a, i, e, theta, raan, w, color) {
+            a, i, e, timeOfPeriapsis, raan, w, color) {
         this.name = name
         this.mass = mass
         this.bodyType = bodyType
@@ -33,7 +33,7 @@ export class Body {
         this.a = a
         this.i = deg2rad(i)
         this.e = e
-        this.theta = deg2rad(theta)
+        this.timeOfPeriapsis = timeOfPeriapsis
         this.raan = deg2rad(raan)
         this.w = deg2rad(w)
 
@@ -73,19 +73,73 @@ export class Body {
 
     // Orbital Period
     get T() {
-        2 * Math.PI * Math.sqrt(Math.pow(this.a, 3) / this.mu())
+        return 2 * Math.PI * Math.sqrt(Math.pow(this.a, 3) / this.mu)
     }
 
     // Perifocal to Inertial Transfomation matrix
     get QxX() {
-        return null
+        return matrix([
+            [-Math.sin(this.raan)*Math.cos(this.i)*Math.sin(this.w)+Math.cos(this.raan)*Math.cos(this.w), -Math.sin(this.raan)*Math.cos(this.i)*Math.cos(this.w)-Math.cos(this.raan)*Math.sin(this.w), Math.sin(this.raan)*Math.sin(this.i)],
+            [Math.cos(this.raan)*Math.cos(this.i)*Math.sin(this.w)+Math.sin(this.raan)*Math.cos(this.w), Math.cos(this.raan)*Math.cos(this.i)*Math.cos(this.w)-Math.sin(this.raan)*Math.sin(this.w), -Math.cos(this.raan)*Math.sin(this.i)],
+            [Math.sin(this.i)*Math.sin(this.w), Math.sin(this.i)*Math.cos(this.w), Math.cos(this.i)]
+        ])
     }
 
-    get stateVector() {
-        return [this.a, 0, 0, 0, 0, 0]
+    // Computes the state vector in the inertial frame.
+    stateVector(time) {
+        if (this.parent === null) {
+            return [0, 0, 0, 0, 0, 0]
+        } 
+        time = (time - this.timeOfPeriapsis) % this.T
+             
+        // Determine true anomaly
+        let trueAnom
+        if (this.e === 0) {
+            trueAnom = Math.PI * 2 / this.T * time
+        } else {
+            // Newton's method
+            let meanAnom = time * 2 * Math.PI / this.T
+            let eccAnomPast = 0
+            let eccAnom = meanAnom;
+            while (Math.abs(eccAnom - eccAnomPast) > 0.01) {
+                eccAnomPast = eccAnom
+                eccAnom = eccAnom - (eccAnom-this.e*Math.sin(eccAnom)-meanAnom) / (1-this.e*Math.cos(eccAnom))
+            }
+            trueAnom = 2*Math.atan(Math.sqrt(1+this.e)/Math.sqrt(1-this.e)*Math.tan(eccAnom/2))
+        }
+
+        // Perifocal to Inertial Rotation Matrix
+        let QxX = this.QxX
+
+        // Determine Position
+        let R = matrix([
+            [Math.cos(trueAnom)], 
+            [Math.sin(trueAnom)], 
+            [0]
+        ])
+        R = multiply(Math.pow(this.h, 2)/this.mu/(1+this.e*Math.cos(trueAnom)), R) 
+        R = multiply(QxX, R)    
+        console.log(R._data[0])  
+
+        // Determine Velocity
+        let V = matrix([
+            [-Math.sin(trueAnom)],
+            [this.e + Math.cos(trueAnom)],
+            [0]
+        ])
+        V = multiply(this.mu/this.h, V)
+        V = multiply(QxX, V)
+
+        return [R._data[0], R._data[2], R._data[1], V._data[0], V._data[2], V._data[1]]
     }
 
-    update(focus) {
+    // Draws a bodies and it's children's orbits.  Called whenever scale is changed.
+    drawOrbit() {
+        
+    }
+
+    // Draw a body.  Called every frame.
+    update(focus, time) {
         var visualRadius = this.radius / scale
         if (false) {    // Object Hidden
             this.markerMesh.visible = false;
@@ -94,12 +148,12 @@ export class Body {
         else if (visualRadius < 0.01) {  // Marker Mesh
             this.markerMesh.visible = true;
             this.realMesh.visible = false;
-            this.markerMesh.position.copy(transform(sv2r(this.stateVector), focus))
+            this.markerMesh.position.copy(transform(sv2r(this.stateVector(time)), focus))
         }
         else {  // Visible in local space
             this.markerMesh.visible = false;
             this.realMesh.visible = true;
-            this.realMesh.position.copy(transform(sv2r(this.stateVector), focus))
+            this.realMesh.position.copy(transform(sv2r(this.stateVector(time)), focus))
             this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
         }
 
@@ -126,8 +180,7 @@ function v3sub(v1, v2) {
 }
 
 function sv2r(sv) {
-    var r = sv.slice(0, 3)
-    return new THREE.Vector3(r[0], r[1], r[2])
+    return new THREE.Vector3(sv[0], sv[1], sv[2])
 }
 
 function transform(point, focus)
@@ -138,5 +191,6 @@ function transform(point, focus)
     }
     focusSV = v3sub(point, focusSV)
     focusSV.multiplyScalar(1/scale)
+    console.log(focusSV)
     return focusSV
 }
