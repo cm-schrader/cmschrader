@@ -22,6 +22,7 @@ function animate() {
 
 	Sol.update(Sol, time)
 	Mercury.update(Sol, time)
+	Mercury.drawOrbit(Sol)
 	controls.update()
 	renderer.render(scene, camera)
 }

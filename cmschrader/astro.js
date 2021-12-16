@@ -14,6 +14,7 @@ export const Probe = Symbol("Probe")
 
 export var scale = 5e8
 const G = 6.67408e-11
+const ORBIT_RES = 360
 // var time // TODO Make actual date time? Let you set the solar system to any arbitrary datetime
 // TODO Could I lazy load bodies?  Load in the focus and stuff near it first
 
@@ -52,6 +53,14 @@ export class Body {
         this.realMesh = new THREE.Mesh(this.realGeometry, this.realMaterial)
         scene.add(this.realMesh)      
         
+        if (this.parent != null) {
+            this.orbitMaterial = new THREE.LineBasicMaterial({color: this.color})
+            this.orbitGeometry = new THREE.BufferGeometry()
+            const vertices = new Float32Array(ORBIT_RES * 3+3); // 3 vertices per point
+	        this.orbitGeometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+            this.orbit = new THREE.Line(this.orbitGeometry, this.orbitMaterial)
+            scene.add(this.orbit)
+        }
         
         // const focusOnBody = (ev) => {setFocus(this)}
         // this.markerMesh.on('click', focusOnBody);
@@ -119,7 +128,6 @@ export class Body {
         ])
         R = multiply(Math.pow(this.h, 2)/this.mu/(1+this.e*Math.cos(trueAnom)), R) 
         R = multiply(QxX, R)    
-        console.log(R._data[0])  
 
         // Determine Velocity
         let V = matrix([
@@ -130,12 +138,30 @@ export class Body {
         V = multiply(this.mu/this.h, V)
         V = multiply(QxX, V)
 
-        return [R._data[0], R._data[2], R._data[1], V._data[0], V._data[2], V._data[1]]
+        return [R._data[0], R._data[1], R._data[2], V._data[0], V._data[1], V._data[2]]
     }
 
     // Draws a bodies and it's children's orbits.  Called whenever scale is changed.
-    drawOrbit() {
-        
+    drawOrbit(focus) {
+        if (this.parent == null) {return}
+        const vertices = this.orbit.geometry.attributes.position.array
+        let time = this.timeOfPeriapsis
+        var point
+        var index = 0
+        while (time < this.timeOfPeriapsis + this.T) {
+            point = transform(this.stateVector(time), focus, time).toArray()
+            vertices[index++] = point[0]
+            vertices[index++] = point[1]
+            vertices[index++] = point[2]
+            time += this.T / ORBIT_RES
+        }
+        point = transform(this.stateVector(time), focus, time)
+        vertices[index++] = vertices[0]
+        vertices[index++] = vertices[1]
+        vertices[index++] = vertices[2]
+        this.orbit.geometry.attributes.position.needsUpdate = true
+
+        // Children
     }
 
     // Draw a body.  Called every frame.
@@ -148,12 +174,16 @@ export class Body {
         else if (visualRadius < 0.01) {  // Marker Mesh
             this.markerMesh.visible = true;
             this.realMesh.visible = false;
-            this.markerMesh.position.copy(transform(sv2r(this.stateVector(time)), focus))
+            if (this.parent != null) {
+                this.markerMesh.position.copy(transform(this.stateVector(time), focus, time))
+            }
         }
         else {  // Visible in local space
             this.markerMesh.visible = false;
             this.realMesh.visible = true;
-            this.realMesh.position.copy(transform(sv2r(this.stateVector(time)), focus))
+            if (this.parent != null) {
+                this.realMesh.position.copy(transform(this.stateVector(time), focus, time))
+            }
             this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
         }
 
@@ -180,17 +210,17 @@ function v3sub(v1, v2) {
 }
 
 function sv2r(sv) {
-    return new THREE.Vector3(sv[0], sv[1], sv[2])
+    return new THREE.Vector3(sv[0], sv[2], sv[1])
 }
 
-function transform(point, focus)
+function transform(point, focus, time)
 {
-    var focusSV = sv2r(focus.stateVector)
-    if (point.equals(focusSV)){
+    var pointSV = sv2r(point)
+    var focusSV = sv2r(focus.stateVector(time))
+    if (pointSV.equals(focusSV)){
         return new THREE.Vector3(0, 0, 0)
     }
-    focusSV = v3sub(point, focusSV)
+    focusSV = v3sub(pointSV, focusSV)
     focusSV.multiplyScalar(1/scale)
-    console.log(focusSV)
     return focusSV
 }
