@@ -21,8 +21,7 @@ function animate() {
     time += 8000
 
 	Sol.update(Sol, time)
-	Mercury.update(Sol, time)
-	Mercury.drawOrbit(Sol)
+	// Mercury.update(Sol, time)
 	controls.update()
 	renderer.render(scene, camera)
 }
@@ -60,7 +59,10 @@ function onWindowResize(){
 // }
 
 // TODO read bodies from files.  Maybe split into multiple files so its not just one huge CSV?
+// TODO Get real time of periapsis
 const Sol = new Astro.Body(scene, "Sol", null, Astro.Star, 696000e+3, 1.9891e+30, 0, 0, 0, 0, 0, 0, 0xffcb3d)
 const Mercury = new Astro.Body(scene, "Mercury", Sol, Astro.Planet, 2439.7e+3, 3.3011e+23, 57909050e+3, 6.35, 0.205, 210, 48.331, 29.124, 0x995532)
+const Earth = new Astro.Body(scene, "Earth", Sol, Astro.Planet, 6371e+3, 5.9724e+24, 149.6e+9, 1.578690, 0.0167086, 10, 174.873, 288.1, 0x345eeb)
+const Luna = new Astro.Body(scene, "Luna", Earth, Astro.Moon, 1737.1e+3, 0.07346e+24, .3844e+9, 5.145, 0, 0, 0, 0, 0x444444)
 
 animate()

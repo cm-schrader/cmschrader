@@ -43,7 +43,7 @@ export class Body {
             this.parent.children.push(this)
         }
 
-        this.markerGeometry = new THREE.SphereGeometry(1, 8, 4)
+        this.markerGeometry = new THREE.SphereGeometry(3, 8, 4)
         this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
         this.markerMesh = new THREE.Mesh(this.markerGeometry, this.markerMaterial)
         scene.add(this.markerMesh)   
@@ -51,12 +51,12 @@ export class Body {
         this.realGeometry = new THREE.SphereGeometry(1, 32, 16)
         this.realMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
         this.realMesh = new THREE.Mesh(this.realGeometry, this.realMaterial)
-        scene.add(this.realMesh)      
+        scene.add(this.realMesh)    
         
         if (this.parent != null) {
             this.orbitMaterial = new THREE.LineBasicMaterial({color: this.color})
             this.orbitGeometry = new THREE.BufferGeometry()
-            const vertices = new Float32Array(ORBIT_RES * 3+3); // 3 vertices per point
+            const vertices = new Float32Array(ORBIT_RES * 3 + 3); 
 	        this.orbitGeometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
             this.orbit = new THREE.Line(this.orbitGeometry, this.orbitMaterial)
             scene.add(this.orbit)
@@ -96,7 +96,7 @@ export class Body {
 
     // Computes the state vector in the inertial frame.
     stateVector(time) {
-        if (this.parent === null) {
+        if (this.parent == null) {
             return [0, 0, 0, 0, 0, 0]
         } 
         time = (time - this.timeOfPeriapsis) % this.T
@@ -141,6 +141,42 @@ export class Body {
         return [R._data[0], R._data[1], R._data[2], V._data[0], V._data[1], V._data[2]]
     }
 
+    transform(point, focus, time)
+    {
+        var pointSV = sv2r(point)
+        var focusSV = sv2r(focus.stateVector(time))
+        if (pointSV.equals(focusSV)){
+            return new THREE.Vector3(0, 0, 0)
+        }
+        focusSV = v3sub(pointSV, focusSV)
+        // var parent = this.parent
+        // while (parent != null) {
+        //     focusSV.add(sv2r(parent.stateVector(time)))
+        //     parent = parent.parent
+        // }
+        // console.log(this.name + " " + focusSV.toArray()[0])
+        if (this.name === "Luna") {
+        }
+        focusSV.add(this.getOffset(time))
+        // TODO Fix moon offsets
+        // if (this.name === "Luna") {
+        //     console.log(focusSV)
+        // }
+        focusSV.multiplyScalar(1/scale)
+        return focusSV.clone()
+    }
+
+    getOffset(time) {
+        var offset
+        if (this.parent != null) {
+            offset = sv2r(this.parent.stateVector(time))
+            offset.add(this.parent.getOffset())
+        } else {
+            offset = new THREE.Vector3(0, 0, 0) 
+        }
+        return offset
+    }
+
     // Draws a bodies and it's children's orbits.  Called whenever scale is changed.
     drawOrbit(focus) {
         if (this.parent == null) {return}
@@ -149,13 +185,13 @@ export class Body {
         var point
         var index = 0
         while (time < this.timeOfPeriapsis + this.T) {
-            point = transform(this.stateVector(time), focus, time).toArray()
+            point = this.transform(this.stateVector(time), focus, time).toArray()
             vertices[index++] = point[0]
             vertices[index++] = point[1]
             vertices[index++] = point[2]
             time += this.T / ORBIT_RES
         }
-        point = transform(this.stateVector(time), focus, time)
+        point = this.transform(this.stateVector(time), focus, time)
         vertices[index++] = vertices[0]
         vertices[index++] = vertices[1]
         vertices[index++] = vertices[2]
@@ -170,26 +206,27 @@ export class Body {
         if (false) {    // Object Hidden
             this.markerMesh.visible = false;
             this.realMesh.visible = false;
-        }
-        else if (visualRadius < 0.01) {  // Marker Mesh
+        }  
+        else if (visualRadius < 0.1) {  // Marker Mesh
             this.markerMesh.visible = true;
             this.realMesh.visible = false;
             if (this.parent != null) {
-                this.markerMesh.position.copy(transform(this.stateVector(time), focus, time))
+                this.markerMesh.position.copy(this.transform(this.stateVector(time), focus, time))
             }
         }
         else {  // Visible in local space
             this.markerMesh.visible = false;
             this.realMesh.visible = true;
             if (this.parent != null) {
-                this.realMesh.position.copy(transform(this.stateVector(time), focus, time))
+                this.realMesh.position.copy(this.transform(this.stateVector(time), focus, time))
             }
             this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
         }
+        this.drawOrbit(focus) // TODO only do this when scale changes
 
-        // this.children.forEach(child => {
-        //     if (child !== null) child.update()
-        // })
+        this.children.forEach(child => {
+            if (child !== null) child.update(focus, time)
+        })
     }
 }
 
@@ -211,16 +248,4 @@ function v3sub(v1, v2) {
 
 function sv2r(sv) {
     return new THREE.Vector3(sv[0], sv[2], sv[1])
-}
-
-function transform(point, focus, time)
-{
-    var pointSV = sv2r(point)
-    var focusSV = sv2r(focus.stateVector(time))
-    if (pointSV.equals(focusSV)){
-        return new THREE.Vector3(0, 0, 0)
-    }
-    focusSV = v3sub(pointSV, focusSV)
-    focusSV.multiplyScalar(1/scale)
-    return focusSV
 }
