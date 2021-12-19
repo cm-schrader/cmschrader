@@ -13,8 +13,10 @@ export const Probe = Symbol("Probe")
 
 
 export var scale = 5e8
+var focusBody
 const G = 6.67408e-11
 const ORBIT_RES = 360
+var bodies = []
 // var time // TODO Make actual date time? Let you set the solar system to any arbitrary datetime
 // TODO Could I lazy load bodies?  Load in the focus and stuff near it first
 
@@ -62,6 +64,16 @@ export class Body {
             scene.add(this.orbit)
         }
         
+        bodies.push(this)
+        if (this.bodyType != Moon && this.bodyType != Station && this.bodyType != Satellite 
+            && this.bodyType != Vessel && this.bodyType != Probe)
+        {
+            var focusSelect = document.getElementById("focusSelect")
+            var el = document.createElement("option")
+            el.textContent = this.name
+            el.value = this.name
+            focusSelect.appendChild(el)
+        }
         // const focusOnBody = (ev) => {setFocus(this)}
         // this.markerMesh.on('click', focusOnBody);
         // this.realMesh.on('click', focusOnBody);
@@ -141,10 +153,10 @@ export class Body {
         return [R._data[0], R._data[1], R._data[2], V._data[0], V._data[1], V._data[2]]
     }
 
-    transform(point, focus, time)
+    transform(point, time)
     {
         var pointSV = sv2r(point)
-        var focusSV = sv2r(focus.stateVector(time))
+        var focusSV = sv2r(focusBody.stateVector(time))
         if (pointSV.equals(focusSV)){
             return new THREE.Vector3(0, 0, 0)
         }
@@ -185,13 +197,13 @@ export class Body {
         var point
         var index = 0
         while (time < this.timeOfPeriapsis + this.T) {
-            point = this.transform(this.stateVector(time), focus, time).toArray()
+            point = this.transform(this.stateVector(time), time).toArray()
             vertices[index++] = point[0]
             vertices[index++] = point[1]
             vertices[index++] = point[2]
             time += this.T / ORBIT_RES
         }
-        point = this.transform(this.stateVector(time), focus, time)
+        point = this.transform(this.stateVector(time), time)
         vertices[index++] = vertices[0]
         vertices[index++] = vertices[1]
         vertices[index++] = vertices[2]
@@ -201,7 +213,7 @@ export class Body {
     }
 
     // Draw a body.  Called every frame.
-    update(focus, time) {
+    update(time) {
         var visualRadius = this.radius / scale
         if (false) {    // Object Hidden
             this.markerMesh.visible = false;
@@ -211,14 +223,14 @@ export class Body {
             this.markerMesh.visible = true;
             this.realMesh.visible = false;
             if (this.parent != null) {
-                this.markerMesh.position.copy(this.transform(this.stateVector(time), focus, time))
+                this.markerMesh.position.copy(this.transform(this.stateVector(time), time))
             }
         }
         else {  // Visible in local space
             this.markerMesh.visible = false;
             this.realMesh.visible = true;
             if (this.parent != null) {
-                this.realMesh.position.copy(this.transform(this.stateVector(time), focus, time))
+                this.realMesh.position.copy(this.transform(this.stateVector(time), time))
             }
             this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
         }
@@ -230,13 +242,17 @@ export class Body {
     }
 }
 
-function setFocus(newFocus) {
-    console.log("Focus on " + newFocus.name)
-    focus = newFocus // TODO make focus position so you can lerp, bonus, make it async lerp to something
+export function setFocus(newFocus) {
+    // document.getElementById("focusText").innerHTML = newFocus.name
+    focusBody = newFocus // TODO make focus position so you can lerp, bonus, make it async lerp to something
 }
 
-function setScale(newScale) {
+export function setScale(newScale) {
     scale = newScale
+}
+
+export function updateFocus() {
+    setFocus(bodies.find(body => document.getElementById("focusSelect").value === body.name))
 }
 
 //https://www.cs.uaf.edu/2013/spring/cs493/lecture/01_24_vectors.html

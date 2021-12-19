@@ -12,6 +12,7 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 camera.position.set(2, 5, 10);
 camera.lookAt(new THREE.Vector3(0,0,0))
 const controls = new OrbitControls(camera, renderer.domElement);
+// controls.touches.TWO = THREE.TOUCH.
 
 // TODO find log how long average frame takes
 var time = Date.now()
@@ -20,8 +21,7 @@ function animate() {
 
     time += 8000
 
-	Sol.update(Sol, time)
-	// Mercury.update(Sol, time)
+	Sol.update(time)
 	controls.update()
 	renderer.render(scene, camera)
 }
@@ -65,4 +65,8 @@ const Mercury = new Astro.Body(scene, "Mercury", Sol, Astro.Planet, 2439.7e+3, 3
 const Earth = new Astro.Body(scene, "Earth", Sol, Astro.Planet, 6371e+3, 5.9724e+24, 149.6e+9, 1.578690, 0.0167086, 10, 174.873, 288.1, 0x345eeb)
 const Luna = new Astro.Body(scene, "Luna", Earth, Astro.Moon, 1737.1e+3, 0.07346e+24, .3844e+9, 5.145, 0, 0, 0, 0, 0x444444)
 
+Astro.setFocus(Sol)
+function uf() {Astro.updateFocus()}
+// document.getElementById("focusSelect").setAttribute("onchange", "uf()")
+document.getElementById("focusSelect").onchange = function() {Astro.updateFocus()}
 animate()

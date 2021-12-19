@@ -12,3 +12,13 @@ canvas {
   top: 0;
   left: 0;
 }
+
+#focusSelect {
+  position: fixed;
+  z-index: 1;
+  top: 1em;
+  left: 5em;
+  color: azure;
+  background-color: black;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
