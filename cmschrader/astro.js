@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { matrix, multiply } from 'mathjs'
+import { Vector3 } from 'three'
 
 export const Star = Symbol("Star")
 export const Planet = Symbol("Planet")
@@ -12,7 +13,7 @@ export const Satellite = Symbol("Satellite")
 export const Probe = Symbol("Probe")
 
 
-export var scale = 5e8
+export var scale = 20e8
 var focusBody
 const G = 6.67408e-11
 const ORBIT_RES = 360
@@ -39,13 +40,18 @@ export class Body {
         this.timeOfPeriapsis = timeOfPeriapsis
         this.raan = deg2rad(raan)
         this.w = deg2rad(w)
+        this.lastScale = -1
 
         this.children = []
         if (this.parent !== null) {
             this.parent.children.push(this)
         }
 
-        this.markerGeometry = new THREE.SphereGeometry(3, 8, 4)
+        var georad = .5
+        if (this.bodyType === Star) georad = 1
+        if (this.bodyType === Asteroid) georad = .25
+        if (this.bodyType === DwarfPlanet) georad = .33
+        this.markerGeometry = new THREE.SphereGeometry(georad, 16, 8)
         this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
         this.markerMesh = new THREE.Mesh(this.markerGeometry, this.markerMaterial)
         scene.add(this.markerMesh)   
@@ -54,6 +60,13 @@ export class Body {
         this.realMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
         this.realMesh = new THREE.Mesh(this.realGeometry, this.realMaterial)
         scene.add(this.realMesh)    
+
+        this.label = document.createElement("div")
+        this.label.style.position = "absolute"
+        this.label.style.fontSize = georad*2 + "rem"
+        this.label.className = "spaceLabel"
+        this.label.innerHTML = this.name
+        document.getElementById("initialSpace").appendChild(this.label) 
         
         if (this.parent != null) {
             this.orbitMaterial = new THREE.LineBasicMaterial({color: this.color})
@@ -64,16 +77,16 @@ export class Body {
             scene.add(this.orbit)
         }
         
-        bodies.push(this)
-        if (this.bodyType != Moon && this.bodyType != Station && this.bodyType != Satellite 
-            && this.bodyType != Vessel && this.bodyType != Probe)
-        {
-            var focusSelect = document.getElementById("focusSelect")
-            var el = document.createElement("option")
-            el.textContent = this.name
-            el.value = this.name
-            focusSelect.appendChild(el)
-        }
+        // bodies.push(this)
+        // if (this.bodyType != Moon && this.bodyType != Station && this.bodyType != Satellite 
+        //     && this.bodyType != Vessel && this.bodyType != Probe)
+        // {
+        //     var focusSelect = document.getElementById("focusSelect")
+        //     var el = document.createElement("option")
+        //     el.textContent = this.name
+        //     el.value = this.name
+        //     focusSelect.appendChild(el)
+        // }
         // const focusOnBody = (ev) => {setFocus(this)}
         // this.markerMesh.on('click', focusOnBody);
         // this.realMesh.on('click', focusOnBody);
@@ -153,36 +166,45 @@ export class Body {
         return [R._data[0], R._data[1], R._data[2], V._data[0], V._data[1], V._data[2]]
     }
 
-    transform(point, time)
+    transform(pointSV, time)
     {
-        var pointSV = sv2r(point)
+        // var focusSV = focusBody.stateVector(time)
+        // if (this === focusBody) {
+        //     return new THREE.Vector3(0, 0, 0)
+        // }
+        // TODO point + offset (make offset return SV)
+        // pointSV = svSub(pointSV, focusSV)
+        // pointSV = svScalar(pointSV, 1/scale)
+        // return sv2r(pointSV)
+        var pointSV = sv2r(pointSV)
         var focusSV = sv2r(focusBody.stateVector(time))
         if (pointSV.equals(focusSV)){
             return new THREE.Vector3(0, 0, 0)
         }
-        focusSV = v3sub(pointSV, focusSV)
         // var parent = this.parent
         // while (parent != null) {
         //     focusSV.add(sv2r(parent.stateVector(time)))
         //     parent = parent.parent
         // }
         // console.log(this.name + " " + focusSV.toArray()[0])
-        if (this.name === "Luna") {
-        }
-        focusSV.add(this.getOffset(time))
+        // pointSV.add(this.getOffset(time))
+        pointSV = v3sub(pointSV, focusSV)
+        // if (this.name == "Mercury") {
+        //     console.log(pointSV)///1000000000)
+        // }
         // TODO Fix moon offsets
         // if (this.name === "Luna") {
         //     console.log(focusSV)
         // }
-        focusSV.multiplyScalar(1/scale)
-        return focusSV.clone()
+        pointSV.multiplyScalar(1/scale)
+        return pointSV.clone()
     }
 
     getOffset(time) {
         var offset
         if (this.parent != null) {
             offset = sv2r(this.parent.stateVector(time))
-            offset.add(this.parent.getOffset())
+            offset.add(this.parent.getOffset(time))
         } else {
             offset = new THREE.Vector3(0, 0, 0) 
         }
@@ -190,7 +212,7 @@ export class Body {
     }
 
     // Draws a bodies and it's children's orbits.  Called whenever scale is changed.
-    drawOrbit(focus) {
+    drawOrbit() {
         if (this.parent == null) {return}
         const vertices = this.orbit.geometry.attributes.position.array
         let time = this.timeOfPeriapsis
@@ -203,7 +225,7 @@ export class Body {
             vertices[index++] = point[2]
             time += this.T / ORBIT_RES
         }
-        point = this.transform(this.stateVector(time), time)
+        point = this.transform(this.stateVector(time), time).toArray()
         vertices[index++] = vertices[0]
         vertices[index++] = vertices[1]
         vertices[index++] = vertices[2]
@@ -213,31 +235,56 @@ export class Body {
     }
 
     // Draw a body.  Called every frame.
-    update(time) {
+    update(time, camera) {
+        var buffer = 60;
         var visualRadius = this.radius / scale
-        if (false) {    // Object Hidden
-            this.markerMesh.visible = false;
-            this.realMesh.visible = false;
-        }  
-        else if (visualRadius < 0.1) {  // Marker Mesh
+        var position = this.transform(this.stateVector(time), time)
+        var projection = projectToCamera(position, camera)
+        
+        // if (false) {    // Object Hidden
+        //     this.markerMesh.visible = false;
+        //     this.realMesh.visible = false;
+        // }
+
+        if (this.a / scale < 2 && this.a !== 0) {
+            this.markerMesh.visible = false
+            this.realMesh.visible = false
+            this.label.style.visibility = "hidden"
+            if (typeof this.orbit !== 'undefined') {
+                this.orbit.visible = false
+            }
+        } else {//visualRadius < 0.1) {  // Marker Mesh
             this.markerMesh.visible = true;
             this.realMesh.visible = false;
-            if (this.parent != null) {
-                this.markerMesh.position.copy(this.transform(this.stateVector(time), time))
+            if (typeof this.orbit !== 'undefined') {
+                this.orbit.visible = true
+                if (this.lastScale != scale) // TODO Optimize Scrolling to be smoother (maybe store/scale orbit rather than recalcing everytime?)
+                {
+                    this.drawOrbit()
+                    this.lastScale = scale
+                }
+            }
+            this.markerMesh.position.copy(position)   
+            if (projection.x > buffer && projection.x < window.innerWidth - buffer &&
+                projection.y > buffer && projection.y < window.innerHeight - buffer &&
+                this.a / scale > 4 && this.a !== 0)
+            {
+                this.label.style.visibility = "visible"
+                this.label.style.left = projection.x + 10 + "px"
+                this.label.style.top = projection.y - 20 + "px" //+ window.scrollY
+            } else {
+                this.label.style.visibility = "hidden"
             }
         }
-        else {  // Visible in local space
-            this.markerMesh.visible = false;
-            this.realMesh.visible = true;
-            if (this.parent != null) {
-                this.realMesh.position.copy(this.transform(this.stateVector(time), time))
-            }
-            this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
-        }
-        this.drawOrbit(focus) // TODO only do this when scale changes
+        // else {  // Visible in local space
+        //     this.markerMesh.visible = false;
+        //     this.realMesh.visible = true;
+        //     this.realMesh.position.copy(position)
+        //     this.realMesh.scale.copy(new THREE.Vector3(visualRadius, visualRadius, visualRadius))
+        // }
 
         this.children.forEach(child => {
-            if (child !== null) child.update(focus, time)
+            if (child !== null) child.update(time, camera)
         })
     }
 }
@@ -258,10 +305,51 @@ export function updateFocus() {
 //https://www.cs.uaf.edu/2013/spring/cs493/lecture/01_24_vectors.html
 // v1 - v2
 function v3sub(v1, v2) {
-    var nv2 = v2.clone().multiplyScalar(-1)
-    return v1.clone().add(nv2)
+    v2.multiplyScalar(-1)
+    v1.add(v2)
+    return v1
+}
+
+function projectToCamera(pos, camera) {
+    var vector = pos.clone().project(camera)
+    vector.x = (vector.x + 1)/2 * window.innerWidth
+        vector.y = -(vector.y - 1)/2 * window.innerHeight
+        return vector
+}
+
+function svEquals(ar1, ar2) {
+    for (let i = 0; i < 3; ++i) {
+        if (ar1[i] !== ar2[i]) return false
+    }
+    return true
+}
+
+function svAdd(ar1, ar2) {
+    for (let i = 0; i < 3; ++i) {
+        ar1[i] += ar2[i]
+    }
+    return ar1
+}
+
+function svSub(ar1, ar2) {
+    return svAdd(ar1, svScalar(ar2, -1))
+}
+
+function svScalar(ar, scalar) {
+    ar.forEach(function(el, i, array) {
+        array[i] = el * scalar
+    })
+    return ar
 }
 
 function sv2r(sv) {
-    return new THREE.Vector3(sv[0], sv[2], sv[1])
+    return new THREE.Vector3(sv[0], sv[2], sv[1]) 
+}
+
+function mag(v1) {
+    return Math.sqrt(
+        Math.pow(v1.x, 2) + 
+        Math.pow(v1.y, 2) + 
+        Math.pow(v1.z, 2)  
+    )
 }

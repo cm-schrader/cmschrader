@@ -1,16 +1,29 @@
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+@font-face {
+  font-family: Jost;
+  src: url("Jost-500-Medium.otf") format("opentype");
+}
+
+html {
+  line-height: 1.75rem;
+  scroll-behavior: smooth;
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: azure;
+  font-family: Jost, Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+}
+
+p {
+  color: azure;
+  z-index: 1;
+}
 
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -2;
 }
 
 #focusSelect {
@@ -20,5 +33,24 @@ canvas {
   left: 5em;
   color: azure;
   background-color: black;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.spaceLabel {
+  /* color: azure; */
+  color: azure;
+  font-family: Jost, Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+  position: fixed !important;
+  z-index: 1;
+}
+
+.container {
+  max-width: 37%;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(3px);
+  margin-left: 3%;
+  padding: 20px;
+  z-index: 4;
+  position: relative;
 }
