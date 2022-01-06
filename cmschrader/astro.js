@@ -7,6 +7,7 @@ export const Planet = Symbol("Planet")
 export const DwarfPlanet = Symbol("DwarfPlanet")
 export const Moon = Symbol("Moon")
 export const Asteroid = Symbol("Asteroid")
+export const Commet = Symbol("Commet")
 export const Station = Symbol("Station")
 export const Vessel = Symbol("Vessel")
 export const Satellite = Symbol("Satellite")
@@ -16,10 +17,8 @@ export const Probe = Symbol("Probe")
 export var scale = 20e8
 var focusBody
 const G = 6.67408e-11
-const ORBIT_RES = 360
+const ORBIT_RES = 400
 var bodies = []
-// var time // TODO Make actual date time? Let you set the solar system to any arbitrary datetime
-// TODO Could I lazy load bodies?  Load in the focus and stuff near it first
 
 function deg2rad(deg) {
     return deg * Math.PI/180;
@@ -49,7 +48,7 @@ export class Body {
 
         var georad = .5
         if (this.bodyType === Star) georad = 1
-        if (this.bodyType === Asteroid) georad = .25
+        if (this.bodyType === Asteroid || this.bodyType === Commet) georad = .25
         if (this.bodyType === DwarfPlanet) georad = .33
         this.markerGeometry = new THREE.SphereGeometry(georad, 16, 8)
         this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
@@ -75,21 +74,18 @@ export class Body {
 	        this.orbitGeometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
             this.orbit = new THREE.Line(this.orbitGeometry, this.orbitMaterial)
             scene.add(this.orbit)
+
+            this.orbitPoints = []
+            let time = this.timeOfPeriapsis
+            let dt = this.T / ORBIT_RES
+            // if (this.e > 0.7) {
+            //     dt /= 10 
+            // } 
+            while (time < this.timeOfPeriapsis + this.T) {
+                this.orbitPoints.push(this.stateVector(time))
+                time += dt
+            }            
         }
-        
-        // bodies.push(this)
-        // if (this.bodyType != Moon && this.bodyType != Station && this.bodyType != Satellite 
-        //     && this.bodyType != Vessel && this.bodyType != Probe)
-        // {
-        //     var focusSelect = document.getElementById("focusSelect")
-        //     var el = document.createElement("option")
-        //     el.textContent = this.name
-        //     el.value = this.name
-        //     focusSelect.appendChild(el)
-        // }
-        // const focusOnBody = (ev) => {setFocus(this)}
-        // this.markerMesh.on('click', focusOnBody);
-        // this.realMesh.on('click', focusOnBody);
     }
 
     // Gravitational Constant
@@ -168,34 +164,11 @@ export class Body {
 
     transform(pointSV, time)
     {
-        // var focusSV = focusBody.stateVector(time)
-        // if (this === focusBody) {
-        //     return new THREE.Vector3(0, 0, 0)
-        // }
-        // TODO point + offset (make offset return SV)
-        // pointSV = svSub(pointSV, focusSV)
-        // pointSV = svScalar(pointSV, 1/scale)
-        // return sv2r(pointSV)
         var pointSV = sv2r(pointSV)
         var focusSV = sv2r(focusBody.stateVector(time))
         if (pointSV.equals(focusSV)){
             return new THREE.Vector3(0, 0, 0)
         }
-        // var parent = this.parent
-        // while (parent != null) {
-        //     focusSV.add(sv2r(parent.stateVector(time)))
-        //     parent = parent.parent
-        // }
-        // console.log(this.name + " " + focusSV.toArray()[0])
-        // pointSV.add(this.getOffset(time))
-        pointSV = v3sub(pointSV, focusSV)
-        // if (this.name == "Mercury") {
-        //     console.log(pointSV)///1000000000)
-        // }
-        // TODO Fix moon offsets
-        // if (this.name === "Luna") {
-        //     console.log(focusSV)
-        // }
         pointSV.multiplyScalar(1/scale)
         return pointSV.clone()
     }
@@ -211,27 +184,40 @@ export class Body {
         return offset
     }
 
-    // Draws a bodies and it's children's orbits.  Called whenever scale is changed.
+    // Draws a body's orbit
     drawOrbit() {
         if (this.parent == null) {return}
         const vertices = this.orbit.geometry.attributes.position.array
-        let time = this.timeOfPeriapsis
-        var point
-        var index = 0
-        while (time < this.timeOfPeriapsis + this.T) {
-            point = this.transform(this.stateVector(time), time).toArray()
+        let time = this.timeOfPeriapsis   
+        let point
+        let index = 0             
+        this.orbitPoints.forEach(sv => {
+            point = this.transform(sv, time).toArray()
             vertices[index++] = point[0]
             vertices[index++] = point[1]
             vertices[index++] = point[2]
             time += this.T / ORBIT_RES
-        }
-        point = this.transform(this.stateVector(time), time).toArray()
+        })
         vertices[index++] = vertices[0]
         vertices[index++] = vertices[1]
         vertices[index++] = vertices[2]
         this.orbit.geometry.attributes.position.needsUpdate = true
-
-        // Children
+        // const vertices = this.orbit.geometry.attributes.position.array
+        // let time = this.timeOfPeriapsis
+        // var point
+        // var index = 0
+        // while (time < this.timeOfPeriapsis + this.T) {
+        //     point = this.transform(this.stateVector(time), time).toArray()
+        //     vertices[index++] = point[0]
+        //     vertices[index++] = point[1]
+        //     vertices[index++] = point[2]
+        //     time += this.T / ORBIT_RES
+        // }
+        // point = this.transform(this.stateVector(time), time).toArray()
+        // vertices[index++] = vertices[0]
+        // vertices[index++] = vertices[1]
+        // vertices[index++] = vertices[2]
+        // this.orbit.geometry.attributes.position.needsUpdate = true
     }
 
     // Draw a body.  Called every frame.
@@ -258,7 +244,7 @@ export class Body {
             this.realMesh.visible = false;
             if (typeof this.orbit !== 'undefined') {
                 this.orbit.visible = true
-                if (this.lastScale != scale) // TODO Optimize Scrolling to be smoother (maybe store/scale orbit rather than recalcing everytime?)
+                if (this.lastScale != scale) 
                 {
                     this.drawOrbit()
                     this.lastScale = scale
@@ -290,16 +276,11 @@ export class Body {
 }
 
 export function setFocus(newFocus) {
-    // document.getElementById("focusText").innerHTML = newFocus.name
-    focusBody = newFocus // TODO make focus position so you can lerp, bonus, make it async lerp to something
+    focusBody = newFocus 
 }
 
 export function setScale(newScale) {
     scale = newScale
-}
-
-export function updateFocus() {
-    setFocus(bodies.find(body => document.getElementById("focusSelect").value === body.name))
 }
 
 //https://www.cs.uaf.edu/2013/spring/cs493/lecture/01_24_vectors.html
@@ -346,10 +327,8 @@ function sv2r(sv) {
     return new THREE.Vector3(sv[0], sv[2], sv[1]) 
 }
 
-function mag(v1) {
-    return Math.sqrt(
-        Math.pow(v1.x, 2) + 
-        Math.pow(v1.y, 2) + 
-        Math.pow(v1.z, 2)  
-    )
+export function date2seconds(str)
+{
+    const date = new Date(str + " 00:00:00")
+    return date.getTime() / 1000
 }

@@ -26,6 +26,14 @@ canvas {
   z-index: -2;
 }
 
+#scaleText {
+  position: fixed;
+  z-index: 0;
+  text-align: left;
+  margin: 0 70%;
+  width: 20%;
+}
+
 #focusSelect {
   position: fixed;
   z-index: 1;
@@ -53,4 +61,5 @@ canvas {
   padding: 20px;
   z-index: 4;
   position: relative;
+  visibility: hidden;
 }
