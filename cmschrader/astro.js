@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { matrix, multiply } from 'mathjs'
-import { Vector3 } from 'three'
+import { FloatType, Vector3 } from 'three'
 
 export const Star = Symbol("Star")
 export const Planet = Symbol("Planet")
@@ -76,15 +76,9 @@ export class Body {
             scene.add(this.orbit)
 
             this.orbitPoints = []
-            let time = this.timeOfPeriapsis
-            let dt = this.T / ORBIT_RES
-            // if (this.e > 0.7) {
-            //     dt /= 10 
-            // } 
-            while (time < this.timeOfPeriapsis + this.T) {
-                this.orbitPoints.push(this.stateVector(time))
-                time += dt
-            }            
+            for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / ORBIT_RES) {
+                this.orbitPoints.push(this.stateVector(theta))
+            }          
         }
     }
 
@@ -115,11 +109,7 @@ export class Body {
         ])
     }
 
-    // Computes the state vector in the inertial frame.
-    stateVector(time) {
-        if (this.parent == null) {
-            return [0, 0, 0, 0, 0, 0]
-        } 
+    trueAnom(time) {
         time = (time - this.timeOfPeriapsis) % this.T
              
         // Determine true anomaly
@@ -129,7 +119,7 @@ export class Body {
         } else {
             // Newton's method
             let meanAnom = time * 2 * Math.PI / this.T
-            let eccAnomPast = 0
+            let eccAnomPast = Number.MAX_VALUE
             let eccAnom = meanAnom;
             while (Math.abs(eccAnom - eccAnomPast) > 0.01) {
                 eccAnomPast = eccAnom
@@ -137,6 +127,14 @@ export class Body {
             }
             trueAnom = 2*Math.atan(Math.sqrt(1+this.e)/Math.sqrt(1-this.e)*Math.tan(eccAnom/2))
         }
+        return trueAnom
+    }
+
+    // Computes the state vector in the inertial frame.
+    stateVector(trueAnom) {
+        if (this.parent == null) {
+            return [0, 0, 0, 0, 0, 0]
+        }        
 
         // Perifocal to Inertial Rotation Matrix
         let QxX = this.QxX
@@ -165,7 +163,7 @@ export class Body {
     transform(pointSV, time)
     {
         var pointSV = sv2r(pointSV)
-        var focusSV = sv2r(focusBody.stateVector(time))
+        var focusSV = sv2r(focusBody.stateVector(focusBody.trueAnom(time)))
         if (pointSV.equals(focusSV)){
             return new THREE.Vector3(0, 0, 0)
         }
@@ -176,7 +174,7 @@ export class Body {
     getOffset(time) {
         var offset
         if (this.parent != null) {
-            offset = sv2r(this.parent.stateVector(time))
+            offset = sv2r(this.parent.stateVector(this.parent.trueAnom(time)))
             offset.add(this.parent.getOffset(time))
         } else {
             offset = new THREE.Vector3(0, 0, 0) 
@@ -202,29 +200,13 @@ export class Body {
         vertices[index++] = vertices[1]
         vertices[index++] = vertices[2]
         this.orbit.geometry.attributes.position.needsUpdate = true
-        // const vertices = this.orbit.geometry.attributes.position.array
-        // let time = this.timeOfPeriapsis
-        // var point
-        // var index = 0
-        // while (time < this.timeOfPeriapsis + this.T) {
-        //     point = this.transform(this.stateVector(time), time).toArray()
-        //     vertices[index++] = point[0]
-        //     vertices[index++] = point[1]
-        //     vertices[index++] = point[2]
-        //     time += this.T / ORBIT_RES
-        // }
-        // point = this.transform(this.stateVector(time), time).toArray()
-        // vertices[index++] = vertices[0]
-        // vertices[index++] = vertices[1]
-        // vertices[index++] = vertices[2]
-        // this.orbit.geometry.attributes.position.needsUpdate = true
     }
 
     // Draw a body.  Called every frame.
     update(time, camera) {
         var buffer = 60;
         var visualRadius = this.radius / scale
-        var position = this.transform(this.stateVector(time), time)
+        var position = this.transform(this.stateVector(this.trueAnom(time)), time)
         var projection = projectToCamera(position, camera)
         
         // if (false) {    // Object Hidden

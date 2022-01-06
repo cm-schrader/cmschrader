@@ -24,21 +24,14 @@ const Arrokoth = new Astro.Body(scene, "Arrokoth", Sol, Astro.DwarfPlanet, 22e+3
 const Makemake = new Astro.Body(scene, "Makemake", Sol, Astro.DwarfPlanet, 722e3, 3.1e21, 6.7962e+12, 28.9835, 0.16126, Astro.date2seconds("11/17/2186"), 79.620, 294.834, 0x9dd9ed) 
 const Sedna = new Astro.Body(scene, "Sedna", Sol, Astro.DwarfPlanet, 998e+3, 8.32e+21, 7.57e+13, 11.9307, 0.8496, 170, 144.248, 311.352, 0xffc0cb)  
 const Eris = new Astro.Body(scene, "Eris", Sol, Astro.DwarfPlanet, 1163e+3, 1.6466e+22, 1.015231e+13, 44.040, 0.43607, 200, 35.951, 151.639, 0x3F6E80)
-const Biden = new Astro.Body(scene, "2012 VP113", Sol, Astro.DwarfPlanet, 597e+3, 1.782e+21, 6.5246064e+13, 24.110, 0.68876, 200, 90.680, 293.62, 0x1E90FF)
+const Biden = new Astro.Body(scene, "2012 VP113 \"Biden\"", Sol, Astro.DwarfPlanet, 597e+3, 1.782e+21, 6.5246064e+13, 24.110, 0.68876, 200, 90.680, 293.62, 0x1E90FF)
+const Leleākūhonua = new Astro.Body(scene, "Leleākūhonua", Sol, Astro.DwarfPlanet, 110e+3, 0, 1.6231369e+14, 11.654, 0.93997, Astro.date2seconds("6/11/2078"), 300.780, 117.778, 0xe8c697)
 const Orcus = new Astro.Body(scene, "Orcus", Sol, Astro.DwarfPlanet, 910e+3, 6.348e+20, 5.860347e+12, 20.592, 0.22701, 85, 268.799, 72.310, 0x884343)
 const Gonggong = new Astro.Body(scene, "Gonggong", Sol, Astro.DwarfPlanet, 615e+3, 1.75e+21, 10.0958e+12, 30.6273, 0.49943, Astro.date2seconds("2/17/1857"), 336.8573, 207.6675, 0xa272ab)
 const Ixion = new Astro.Body(scene, "Ixion", Sol, Astro.DwarfPlanet, 711e+3, 2e+12, 5.95429445e+12, 19.6, 0.24579, Astro.date2seconds("9/23/2070"), 71.011, 298.314, 0x929493)
-const Quaoar = new Astro.Body(scene, "Quaoar", Sol, Astro.DwarfPlanet, 555e+3, 1.4e+21, 6.537e+12, 7.9895, 0.04106, Astro.date2seconds("2/11/2075"), 188.927, 147.480, 0x59ff6a)
+const Quaoar = new Astro.Body(scene, "Quaoar", Sol, Astro.DwarfPlanet, 555e+3, 1.4e+21, 6.537e+12, 7.9895, 0.04106, Astro.date2seconds("2/11/2075"), 188.927, 147.480, 0x60b570)
 const Salacia = new Astro.Body(scene, "Salacia", Sol, Astro.DwarfPlanet, 846e+3 / 2, 4.922e+20, 6.31063658e+12, 23.921, 0.10636, 348104889, 279.880, 312.294, 0xcfc84a)
 const Varda = new Astro.Body(scene, "Varda", Sol, Astro.DwarfPlanet, 740e+3 / 2, 2.45e+20, 6.89795782e+12, 21.511, 0.14315, Astro.date2seconds("11/1/2096"), 184.151, 180.072, 0xad2d2d)
-// const dateofHalleyPerihelion = new Date("6/28/2061 00:00:00")
-// const Halley = new Astro.Body(scene, "Halley's Commet", Sol, Astro.Commet, 5.5e+3, 2.2e+14, 2.66792843e+12, 162.26, 0.96713, 0, 58.42, 111.33, 0x91d7ff)
-// Donatis Commet
-// Coggia's Commet
-// Ceasar's Commet
-// Comet Mrkos
-// Comet Kohoutek
-// Comet West   
-// Comet Hyakutake
+const Halley = new Astro.Body(scene, "Halley's Commet", Sol, Astro.Commet, 5.5e+3, 2.2e+14, 2.66792843e+12, 162.26, 0.96713, 0, 58.42, 111.33, 0x91d7ff)
 
 Render.System(Sol, renderSystem)
