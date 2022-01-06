@@ -27,20 +27,37 @@ canvas {
 }
 
 #scaleText {
-  position: fixed;
-  z-index: 0;
-  text-align: left;
-  margin: 0 70%;
-  width: 20%;
+  margin: 5px;
+}
+
+#hide {
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
 }
 
 #focusSelect {
   position: fixed;
   z-index: 1;
-  top: 1em;
-  left: 5em;
   color: azure;
   background-color: black;
+}
+
+#siminfo {
+  position: fixed;
+  z-index: 5;
+  text-align: left;
+  margin: 0 70%;
+  width: 20%;
+}
+
+.glass {
+  padding: 10px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(3px);
 }
 
 .spaceLabel {
@@ -61,5 +78,4 @@ canvas {
   padding: 20px;
   z-index: 4;
   position: relative;
-  visibility: hidden;
 }

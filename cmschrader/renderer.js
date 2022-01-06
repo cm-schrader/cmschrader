@@ -48,7 +48,6 @@ export function System(focus, renderSystem) {
     Astro.setFocus(focus)
     // document.getElementById("focusSelect").onchange = function() {Astro.updateFocus()}
 
-    // TODO Make it so you can toggle hide all content so you can just look at the solar system
     document.addEventListener('scroll', function (e) {
         Astro.setScale(Math.pow(window.scrollY, 2) * 1e4 + 15e8)
         timeScale =  baseTimeScale + Math.pow((window.scrollY)/25, 2) //(window.scrollY+1)/500
@@ -57,6 +56,20 @@ export function System(focus, renderSystem) {
 
     })
     document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
+
+    var hiddenText = false
+    var hidebtn = document.getElementById("hide")
+    var content = document.getElementById("content")
+    hidebtn.addEventListener("click", function (e) {
+        if (hiddenText) {
+            hidebtn.innerHTML = "Hide Text"
+            content.style.visibility = "visible"
+        } else {
+            hidebtn.innerHTML = "Show Text"
+            content.style.visibility = "hidden"
+        }
+        hiddenText = !hiddenText
+    })
 
     animate()
 }

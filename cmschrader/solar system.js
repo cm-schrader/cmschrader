@@ -34,4 +34,4 @@ const Salacia = new Astro.Body(scene, "Salacia", Sol, Astro.DwarfPlanet, 846e+3 
 const Varda = new Astro.Body(scene, "Varda", Sol, Astro.DwarfPlanet, 740e+3 / 2, 2.45e+20, 6.89795782e+12, 21.511, 0.14315, Astro.date2seconds("11/1/2096"), 184.151, 180.072, 0xad2d2d)
 const Halley = new Astro.Body(scene, "Halley's Commet", Sol, Astro.Commet, 5.5e+3, 2.2e+14, 2.66792843e+12, 162.26, 0.96713, 0, 58.42, 111.33, 0x91d7ff)
 
-Render.System(Sol, renderSystem)
+Render.System(Sol, renderSystem) //TODO Make scaling configurable (initial and scroll diff)
