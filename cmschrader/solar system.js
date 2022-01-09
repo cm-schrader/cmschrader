@@ -33,5 +33,6 @@ const Quaoar = new Astro.Body(scene, "Quaoar", Sol, Astro.DwarfPlanet, 555e+3, 1
 const Salacia = new Astro.Body(scene, "Salacia", Sol, Astro.DwarfPlanet, 846e+3 / 2, 4.922e+20, 6.31063658e+12, 23.921, 0.10636, 348104889, 279.880, 312.294, 0xcfc84a)
 const Varda = new Astro.Body(scene, "Varda", Sol, Astro.DwarfPlanet, 740e+3 / 2, 2.45e+20, 6.89795782e+12, 21.511, 0.14315, Astro.date2seconds("11/1/2096"), 184.151, 180.072, 0xad2d2d)
 const Halley = new Astro.Body(scene, "Halley's Commet", Sol, Astro.Commet, 5.5e+3, 2.2e+14, 2.66792843e+12, 162.26, 0.96713, 0, 58.42, 111.33, 0x91d7ff)
+// const Encke = new Astro.Body(scene, "Comet Encke", Sol, Astro.Commet, 0, 0, 331778158e+3, 11.76, 0.8470, Astro.date2seconds("3/10/2017"), )
 
-Render.System(Sol, renderSystem) //TODO Make scaling configurable (initial and scroll diff)
+Render.System(Sol, renderSystem, "The Solar System") //TODO Make scaling configurable (initial and scroll diff)
