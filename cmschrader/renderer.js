@@ -34,11 +34,10 @@ export function System(focus, renderSystem, title) {
         renderSystem.camera.position.set(30*Math.sin(cameraAngle), 40*Math.cos(cameraAngle), 30*Math.cos(cameraAngle));
         renderSystem.camera.lookAt(new THREE.Vector3(0,0,0))
         renderSystem.camera.updateMatrixWorld(); 
-        cameraAngle += .0005
+        cameraAngle += .00025
 
         focus.update(time, renderSystem.camera)
         // renderSystem.controls.update()
-        // TODO Animate camera to slowly rotate around Sol
         renderSystem.renderer.render(renderSystem.scene, renderSystem.camera)
     }
 

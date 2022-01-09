@@ -51,7 +51,7 @@ export class Body {
         if (this.bodyType === Asteroid || this.bodyType === Commet) georad = .25
         if (this.bodyType === DwarfPlanet) georad = .33
         this.markerGeometry = new THREE.SphereGeometry(georad, 16, 8)
-        this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color, wireframe: true})
+        this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color}) //wireframe: true
         this.markerMesh = new THREE.Mesh(this.markerGeometry, this.markerMaterial)
         scene.add(this.markerMesh)   
 
@@ -65,7 +65,7 @@ export class Body {
         this.label.style.fontSize = georad*2 + "rem"
         this.label.className = "spaceLabel"
         this.label.innerHTML = this.name
-        document.getElementById("initialSpace").appendChild(this.label) 
+        document.getElementById("spaceText").appendChild(this.label) 
         
         if (this.parent != null) {
             this.orbitMaterial = new THREE.LineBasicMaterial({color: this.color})

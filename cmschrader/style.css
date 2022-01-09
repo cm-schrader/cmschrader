@@ -1,3 +1,4 @@
+/* Document Styles */
 @font-face {
   font-family: Jost;
   src: url("Jost-500-Medium.otf") format("opentype");
@@ -26,26 +27,21 @@ canvas {
   z-index: -2;
 }
 
+/* Sim Styles */
+#siminfo {
+  position: fixed;
+  z-index: 5;
+  text-align: left;
+  width: 20%;
+  top: 2vh;
+  right: 3vw;
+}
+
 #hide {
   margin: 5px;
   padding: 5px;
   text-align: center;
   cursor: pointer;
-}
-
-#focusSelect {
-  position: fixed;
-  z-index: 1;
-  color: azure;
-  background-color: black;
-}
-
-#siminfo {
-  position: fixed;
-  z-index: 5;
-  text-align: left;
-  margin: 0 70%;
-  width: 20%;
 }
 
 #simtitle {
@@ -54,8 +50,16 @@ canvas {
 
 .siminfotext {
   margin: 5px;
+} 
+
+.spaceLabel {
+  color: azure;
+  font-family: Jost, Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+  position: fixed !important;
+  z-index: 1;
 }
 
+/* Content Styles */
 .glass {
   padding: 10px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
@@ -64,22 +68,44 @@ canvas {
   backdrop-filter: blur(3px);
 }
 
-.spaceLabel {
-  /* color: azure; */
-  color: azure;
-  font-family: Jost, Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-  position: fixed !important;
-  z-index: 1;
-}
-
-.container {
-  max-width: 37%;
+.container { 
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
   border-radius: 5px;
   background-color: rgba(255, 255, 255, .1);
   backdrop-filter: blur(3px);
-  margin-left: 3%;
   padding: 20px;
   z-index: 4;
-  position: relative;
+  width: 35%;
+  margin: 10% 5%;
+}
+
+.top-margin {
+  margin-top: 70vh
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 5%;
+}
+
+/* Mobile Styling */
+@media (max-width: 1100px) {
+  #siminfo {
+    width: 80vw;
+    top: 2vh;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  #content {
+    align-items: center;
+    justify-content: center;
+    gap: 5vh 0vw;
+  }
+
+  .container {
+    width: 80vw;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
