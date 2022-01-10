@@ -1,19 +1,62 @@
+<!-- 
+ __     __     ______     __         ______     ______     __    __     ______    
+/\ \  _ \ \   /\  ___\   /\ \       /\  ___\   /\  __ \   /\ "-./  \   /\  ___\   
+\ \ \/ ".\ \  \ \  __\   \ \ \____  \ \ \____  \ \ \/\ \  \ \ \-./\ \  \ \  __\   
+ \ \__/".~\_\  \ \_____\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \ \_\  \ \_____\ 
+  \/_/   \/_/   \/_____/   \/_____/   \/_____/   \/_____/   \/_/  \/_/   \/_____/ 
+                 ______   ______        __    __     __  __       
+                /\__  _\ /\  __ \      /\ "-./  \   /\ \_\ \      
+                \/_/\ \/ \ \ \/\ \     \ \ \-./\ \  \ \____ \     
+                   \ \_\  \ \_____\     \ \_\ \ \_\  \/\_____\    
+                    \/_/   \/_____/      \/_/  \/_/   \/_____/    
+     __     __     ______     ______     ______     __     ______   ______    
+    /\ \  _ \ \   /\  ___\   /\  == \   /\  ___\   /\ \   /\__  _\ /\  ___\   
+    \ \ \/ ".\ \  \ \  __\   \ \  __<   \ \___  \  \ \ \  \/_/\ \/ \ \  __\   
+     \ \__/".~\_\  \ \_____\  \ \_____\  \/\_____\  \ \_\    \ \_\  \ \_____\ 
+      \/_/   \/_/   \/_____/   \/_____/   \/_____/   \/_/     \/_/   \/_____/ 
+                                                                      
+This website is madw with vanilla HTML, CSS, and JS with MathJS and ThreeJS used to 
+create the astronautical simulation. It is also optimized for both large and small 
+screens. 
+
+TODO: Explain how to look at sim code
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C.M. Schrader</title>
+    <title>C.M. Schrader - Home</title>
   </head>
   <body>
     <div id="app">
+
+      <!-- Menu -->
+      <div id="menu">
+        <div id="burger-menu">
+          <span></span>
+        </div>
+        <div id="menu-links">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/wip.html">Skills</a></li>
+              <li><a href="/wip.html">Experience</a></li>
+              <li><a href="/wip.html">Education</a></li>
+              <li><a href="/wip.html">Just Space</a></li> <!-- TODO Add Modal Warning that you are leaving Portfolio -->
+            </ul>
+        </div>
+      </div>
+      <script src="/menu.js"></script>
+
       <!-- Space Simulation -->
+<!-- TODO: Make unique pages with just the astro sim (bassicly a sub-site) -->
       <canvas id="space"></canvas>
       <div id="siminfo" class="glass">
-        <h4 id="simtitle" class="siminfotext">Title</h4>
-        <h5 id="scaleText" class="siminfotext">Scale</h5>
-        <h5 id="hide" class="glass">Hide Text</h5> 
+        <h3 id="simtitle" class="siminfotext">Title</h3>
+        <p id="scaleText" class="siminfotext">Scale</p>
+        <p id="hide" class="glass">Hide Content</p> 
       </div>
       <div id="spaceText"></div>
       <script type="module" src="/solar system.js"></script>
@@ -21,42 +64,45 @@
       <!-- Content -->
       <div id="content">
         <div class="container" style="margin-top: 85vh;">
-          <h1>Space Portfolio</h1>
+          <h1>Christian "Max" Schrader</h1>
+          <h2><i>Aerospace and Software Engineer</i></h2>
+          <img src="img/profesional.jpg" alt="Headshot" class="float-right">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
+            I'm an Aerospace Engineering graduate student at WPI. My BS is also in Aerospace 
+            Engineering with a minor in Computer Science. My focus is in Dynamics, Control, 
+            and Simulation although I also have a diverse skillset.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
+            This website is a portfolio of my skills and experiences.  You can keep scrolling
+            to see the highlights or you can see more comprehensive pages in the menu in the 
+            top left. If you have questions, opportunities, or just want to talk, you can 
+            email me using the contact button below or the email button on the footer.
           </p>
         </div>
-        <!-- <div class="spacer"></div> -->
-        <!-- <div style="height: 83vh;"></div> -->
         <div class="container right top-margin">
-          <h1>Space Portfolio</h1>
+          <h1>Space Simulation</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
+            In the background, you can see a simulation of the Solar System.  This is all 
+            running locally in your browser using 3D patched that I've implimented in 
+            Javascript.  As you scroll down, the distance scale is decreased and time 
+            accelerates allowing you to see more of the system.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
+            This simulation includes all the planets as well as other bodies like 
+            asteroids and minor planets.  If you want to learn more about any of them,
+            clicking on their labels will take you to a source to learn more.
           </p>
+        </div>
+        <div class="container">
+          <h1>The Bottom</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ac turpis egestas maecenas pharetra convallis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu ultrices vitae auctor eu augue. Mauris a diam maecenas sed enim ut sem viverra. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. At urna condimentum mattis pellentesque id nibh tortor. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Vitae proin sagittis nisl rhoncus. Et malesuada fames ac turpis egestas integer eget. Pretium vulputate sapien nec sagittis aliquam. Dignissim cras tincidunt lobortis feugiat. Ac felis donec et odio pellentesque diam. Tellus elementum sagittis vitae et leo duis ut. Amet consectetur adipiscing elit ut aliquam purus sit.
+            You've reached the bottom of the page.  You can see more comprehensive pages in
+            the menu in the top left.  Alternativley, you can keep scrolling to zoom out more. 
           </p>
         </div>
         <div style="height: 3000vh;"></div>
       </div>
     </div>    
+    <p id="copyright"> Copyright &copy; <script>document.write(new Date().getFullYear())</script> Christian M. Schrader All Rights Reserved</p>
   </body>
 </html>

@@ -14,9 +14,9 @@ export function Scene() {
     camera.position.set(0, 40, 20);
     camera.lookAt(new THREE.Vector3(0,0,0))
     camera.updateMatrixWorld(); 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    // const controls = new OrbitControls(camera, renderer.domElement);
     // controls.touches.TWO = THREE.TOUCH.
-    return {scene, renderer, camera, controls}
+    return {scene, renderer, camera}
 }
 
 export function System(focus, renderSystem, title) {
@@ -53,7 +53,7 @@ export function System(focus, renderSystem, title) {
 
     Astro.setFocus(focus)
     // document.getElementById("focusSelect").onchange = function() {Astro.updateFocus()}
-
+    //TODO Clean up all this code
     document.getElementById("simtitle").innerHTML = title
     document.addEventListener('scroll', function (e) {
         Astro.setScale(Math.pow(window.scrollY, 2) * 1e4 + 15e8)
@@ -69,10 +69,10 @@ export function System(focus, renderSystem, title) {
     var content = document.getElementById("content")
     hidebtn.addEventListener("click", function (e) {
         if (hiddenText) {
-            hidebtn.innerHTML = "Hide Text"
+            hidebtn.innerHTML = "Hide Content"
             content.style.visibility = "visible"
         } else {
-            hidebtn.innerHTML = "Show Text"
+            hidebtn.innerHTML = "Show Content"
             content.style.visibility = "hidden"
         }
         hiddenText = !hiddenText
