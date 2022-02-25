@@ -19,9 +19,9 @@ export function Scene() {
     return {scene, renderer, camera}
 }
 
-export function System(focus, renderSystem, title) {
+export function System(focus, renderSystem, title, baseScale, baseTimeScale, scrollScale, scrollTimeScale) {
     var time = Date.now()
-    var baseTimeScale = 10*86400/1000 // 10 days/second
+    // var baseTimeScale = 10*86400/1000 // 10 days/second
     var timeScale = baseTimeScale
     var lastTime = time
     var cameraAngle = 0
@@ -56,8 +56,8 @@ export function System(focus, renderSystem, title) {
     //TODO Clean up all this code
     document.getElementById("simtitle").innerHTML = title
     document.addEventListener('scroll', function (e) {
-        Astro.setScale(Math.pow(window.scrollY, 2) * 1e4 + 15e8)
-        timeScale =  baseTimeScale + Math.pow((window.scrollY)/25, 2) //(window.scrollY+1)/500
+        Astro.setScale(Math.pow(window.scrollY, 2) * scrollScale + baseScale)
+        timeScale =  baseTimeScale + Math.pow((window.scrollY)/scrollTimeScale, 2) 
 
         document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
 
