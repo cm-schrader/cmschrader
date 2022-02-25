@@ -46,10 +46,10 @@ export class Body {
             this.parent.children.push(this)
         }
 
-        var georad = .5
+        var georad = .66
         if (this.bodyType === Star) georad = 1
-        if (this.bodyType === Asteroid || this.bodyType === Commet) georad = .25
-        if (this.bodyType === DwarfPlanet) georad = .33
+        if (this.bodyType === Asteroid || this.bodyType === Commet) georad = .4
+        if (this.bodyType === DwarfPlanet) georad = .5
         this.markerGeometry = new THREE.SphereGeometry(georad, 16, 8)
         this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color}) //wireframe: true
         this.markerMesh = new THREE.Mesh(this.markerGeometry, this.markerMaterial)
@@ -244,7 +244,7 @@ export class Body {
             {
                 this.label.style.visibility = "visible"
                 this.label.style.left = projection.x + 10 + "px"
-                this.label.style.top = projection.y - 20 + "px" //+ window.scrollY
+                this.label.style.top = projection.y - 20 + "px"
             } else {
                 this.label.style.visibility = "hidden"
             }

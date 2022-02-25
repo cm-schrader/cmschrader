@@ -3,6 +3,12 @@ import * as Astro from './astro.js'
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import { NoToneMapping } from 'three';
+import space_ft from './skybox/space_ft.png'
+import space_bk from './skybox/space_bk.png'
+import space_up from './skybox/space_up.png'
+import space_dn from './skybox/space_dn.png'
+import space_rt from './skybox/space_rt.png'
+import space_lf from './skybox/space_lf.png'  
 
 export function Scene() {
     const scene = new THREE.Scene()
@@ -14,26 +20,16 @@ export function Scene() {
     camera.position.set(0, 40, 20);
     camera.lookAt(new THREE.Vector3(0,0,0))
     camera.updateMatrixWorld(); 
-    // const controls = new OrbitControls(camera, renderer.domElement);
-    // controls.touches.TWO = THREE.TOUCH.
-
-    // const skyboxImage = "space";
-    // // const materialArray = createMaterialArray(skyboxImage);
-    // const materialArray = new THREE.MeshBasicMaterial({wireframe: true})
-    // const skyboxGeo = new THREE.BoxGeometry(999999, 999999, 999999)
-    // const skybox = new THREE.Mesh(skyboxGeo, materialArray) 
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
-        '../static/skybox/space_ft.png',
-        '../static/skybox/space_bk.png',
-        '../static/skybox/space_up.png',
-        '../static/skybox/space_dn.png',
-        '../static/skybox/space_rt.png',
-        '../static/skybox/space_lf.png',        
+        space_ft,
+        space_bk,
+        space_up,
+        space_dn,
+        space_rt,
+        space_lf        
     ]);
     scene.background = texture;
-    // scene.add(skybox)
-
     return {scene, renderer, camera}
 }
 
@@ -79,7 +75,6 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
 
     Astro.setFocus(focus)
     // TODO Fade in/out bodies outside scalle range.
-    // TODO Add skybox
     document.getElementById("simtitle").innerHTML = title
     document.addEventListener('scroll', onScaleScroll)
     document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
