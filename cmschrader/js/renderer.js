@@ -1,4 +1,4 @@
-import './style.css'
+import '../style.css'
 import * as Astro from './astro.js'
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
@@ -51,17 +51,19 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
 
     }    
 
-    Astro.setFocus(focus)
-    // document.getElementById("focusSelect").onchange = function() {Astro.updateFocus()}
-    //TODO Clean up all this code
-    document.getElementById("simtitle").innerHTML = title
-    document.addEventListener('scroll', function (e) {
+    function onScaleScroll (e) {
         Astro.setScale(Math.pow(window.scrollY, 2) * scrollScale + baseScale)
         timeScale =  baseTimeScale + Math.pow((window.scrollY)/scrollTimeScale, 2) 
-
+    
         document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
+    
+    }
+    onScaleScroll()
 
-    })
+    Astro.setFocus(focus)
+    // TODO Fade in/out bodies outside scalle range.
+    document.getElementById("simtitle").innerHTML = title
+    document.addEventListener('scroll', onScaleScroll)
     document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
 
     var hiddenText = false

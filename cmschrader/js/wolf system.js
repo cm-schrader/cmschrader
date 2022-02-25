@@ -10,6 +10,7 @@ const Au = 1.496e+11
 // Bodies
 // TODO Make function to compute mass based off of radius
 // TODO Change radii to better match planets
+// TODO Make planet links go to planetary systems
 const Wolf = new Astro.Body(scene, "Wolf 359", null, Astro.Star, .16*696000e+3, .9*1.9891e+30, 0, 0, 0, 0, 0, 0, 0xeb4034)
 const Earth = new Astro.Body(scene, "Earth (for Comparison)", Wolf, Astro.Planet, Re, Me, Au, 1.578690, 0.0167086, 10, 174.873, 288.1, 0x141e1b)
 
@@ -27,7 +28,7 @@ const Horus = new Astro.Body(scene, "Horus", Wolf, Astro.Planet, 3.0964*Re, 43.9
 const Ishtar = new Astro.Body(scene, "Ishtar", Wolf, Astro.Planet, Re*1.2, Me*2, Au*.135, 1.578690, 0.0067086, 10, 204.873, 88.1, 0x8f0e04)
 // Ishtar is similar to Venus with it's heavy atmosphere.  
 
-const Osiris = new Astro.Body(scene, "Osiris", Wolf, Astro.Planet, 3.0964*Re, 43.9072*Me, 1.8450*Au, 6.5, 0.1067086, 25000000, 320.873, 20.1, 0x349e6b)
+const Osiris = new Astro.Body(scene, "Osiris", Wolf, Astro.Planet, 3.0964*Re, 43.9072*Me, 1.8450*Au, 6.5, 0.1067086, 25000000, 320.873, 20.1, 0x349e6b, "/osiris.html")
 // The moons of Osiris are named for the Assessors of Maat (the 42 Judges) https://en.wikipedia.org/wiki/Assessors_of_Maat
 // Strider
 // Embracer
@@ -41,4 +42,4 @@ const Osiris = new Astro.Body(scene, "Osiris", Wolf, Astro.Planet, 3.0964*Re, 43
 
 const AmunRa = new Astro.Body(scene, "Amun-Ra", Wolf, Astro.Planet, .6*2*Re, .3*2*Me, .8*Au, -1, 0.1067086, 2500, 4.873, .1, 0xd8db27)
 const Anubis = new Astro.Body(scene, "Anubis", Wolf, Astro.Planet, .2*Re, .05*Me, 5*Au, -16, 0.5067086, 2220, 300.873, 1500.1, 0x555555)
-Render.System(Wolf, renderSystem, "The Wolf 359 System", 15e8, 10*86400/1000, 1e4, 25) 
+Render.System(Wolf, renderSystem, "The Wolf 359 System", 25e7, .1*86400/1000, 1e3, 100) 
