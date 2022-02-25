@@ -16,12 +16,29 @@ export function Scene() {
     camera.updateMatrixWorld(); 
     // const controls = new OrbitControls(camera, renderer.domElement);
     // controls.touches.TWO = THREE.TOUCH.
+
+    // const skyboxImage = "space";
+    // // const materialArray = createMaterialArray(skyboxImage);
+    // const materialArray = new THREE.MeshBasicMaterial({wireframe: true})
+    // const skyboxGeo = new THREE.BoxGeometry(999999, 999999, 999999)
+    // const skybox = new THREE.Mesh(skyboxGeo, materialArray) 
+    const loader = new THREE.CubeTextureLoader();
+    const texture = loader.load([
+        '../static/skybox/space_ft.png',
+        '../static/skybox/space_bk.png',
+        '../static/skybox/space_up.png',
+        '../static/skybox/space_dn.png',
+        '../static/skybox/space_rt.png',
+        '../static/skybox/space_lf.png',        
+    ]);
+    scene.background = texture;
+    // scene.add(skybox)
+
     return {scene, renderer, camera}
 }
 
 export function System(focus, renderSystem, title, baseScale, baseTimeScale, scrollScale, scrollTimeScale) {
     var time = Date.now()
-    // var baseTimeScale = 10*86400/1000 // 10 days/second
     var timeScale = baseTimeScale
     var lastTime = time
     var cameraAngle = 0
@@ -62,6 +79,7 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
 
     Astro.setFocus(focus)
     // TODO Fade in/out bodies outside scalle range.
+    // TODO Add skybox
     document.getElementById("simtitle").innerHTML = title
     document.addEventListener('scroll', onScaleScroll)
     document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
@@ -81,4 +99,26 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
     })
 
     animate()
+}
+
+function createPathStrings(filename) {
+    const basePath = "../static/skybox/";
+    const baseFilename = basePath + filename;
+    const fileType = ".png";
+    const sides = ["ft", "bk", "up", "dn", "rt", "lf"];
+    const pathStings = sides.map(side => {
+      return baseFilename + "_" + side + fileType;
+    })
+  
+    return pathStings;
+}
+
+function createMaterialArray(filename) {
+const skyboxImagepaths = createPathStrings(filename);
+    const materialArray = skyboxImagepaths.map(image => {
+        let texture = new THREE.TextureLoader().load(image);
+
+        return texture;
+    })
+    return materialArray
 }

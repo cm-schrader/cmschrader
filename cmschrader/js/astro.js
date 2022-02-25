@@ -68,7 +68,6 @@ export class Body {
         this.label.target = "blank"
         this.label.href = "https://en.wikipedia.org/w/index.php?search=" + this.name + "&title=Special%3ASearch&go=Go&ns0=1" 
         if (link !== undefined) {
-            console.log(link)
             this.label.href = link
         }
         document.getElementById("spaceText").appendChild(this.label) 
