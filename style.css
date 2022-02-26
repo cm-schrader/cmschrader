@@ -2,6 +2,7 @@
 @font-face {
   font-family: Jost;
   src: url("Jost-500-Medium.otf") format("opentype");
+  /* TODO: Put fonts and favicons into static files */
 }
 
 html {

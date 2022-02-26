@@ -26,7 +26,7 @@ function deg2rad(deg) {
 
 export class Body {
     constructor(scene, name, parent, bodyType, radius, mass, 
-            a, i, e, timeOfPeriapsis, raan, w, color, link) {
+            a, i, e, timeOfPeriapsis, raan, w, color, link, internalLink) {
         this.name = name
         this.mass = mass
         this.bodyType = bodyType
@@ -60,15 +60,22 @@ export class Body {
         this.realMesh = new THREE.Mesh(this.realGeometry, this.realMaterial)
         scene.add(this.realMesh)    
 
+        
         this.label = document.createElement("a")
         this.label.style.position = "absolute"
         this.label.style.fontSize = georad*2 + "rem"
         this.label.className = "spaceLabel"
         this.label.innerHTML = this.name
-        this.label.target = "blank"
-        this.label.href = "https://en.wikipedia.org/w/index.php?search=" + this.name + "&title=Special%3ASearch&go=Go&ns0=1" 
-        if (link !== undefined) {
-            this.label.href = link
+        if (!(link == null && internalLink))
+        {
+            if (!internalLink)
+            {
+                this.label.target = "blank"
+            }
+            this.label.href = "https://en.wikipedia.org/w/index.php?search=" + this.name + "&title=Special%3ASearch&go=Go&ns0=1" 
+            if (link !== undefined) {
+                this.label.href = link
+            }
         }
         document.getElementById("spaceText").appendChild(this.label) 
         

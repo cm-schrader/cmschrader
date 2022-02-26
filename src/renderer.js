@@ -3,12 +3,12 @@ import * as Astro from './astro.js'
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import { NoToneMapping } from 'three';
-import space_ft from './skybox/space_ft.png'
-import space_bk from './skybox/space_bk.png'
-import space_up from './skybox/space_up.png'
-import space_dn from './skybox/space_dn.png'
-import space_rt from './skybox/space_rt.png'
-import space_lf from './skybox/space_lf.png'  
+import space_ft from './static/skybox/space_ft.png'
+import space_bk from './static/skybox/space_bk.png'
+import space_up from './static/skybox/space_up.png'
+import space_dn from './static/skybox/space_dn.png'
+import space_rt from './static/skybox/space_rt.png'
+import space_lf from './static/skybox/space_lf.png'  
 
 export function Scene() {
     const scene = new THREE.Scene()
