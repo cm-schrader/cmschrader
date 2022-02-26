@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'rollup'
 
 const root = resolve(__dirname, "src")
-const outDir =  resolve(__dirname, "dist")
+const outDir =  resolve(__dirname, "docs")
 
 export default defineConfig({
     root,
