@@ -9,3 +9,5 @@ To deploy to live, use the two commands.  The first command returns the [COMMIT 
 in the second command. 
 git subtree split --prefix dist 3d
 git push origin [COMMIT ID]:gh-pages --force
+
+For some reason, after this you must reconfigure the custom domain on github

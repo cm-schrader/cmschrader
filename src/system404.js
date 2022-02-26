@@ -1,5 +1,5 @@
-import * as Render from '../renderer.js'
-import * as Astro from '../astro.js'
+import * as Render from './renderer.js'
+import * as Astro from './astro.js'
 
 const renderSystem = Render.Scene()
 const scene = renderSystem.scene
