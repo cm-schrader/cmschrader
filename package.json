@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "vite build & git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
     "vite": "^2.6.4"
