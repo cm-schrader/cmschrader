@@ -75,6 +75,7 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
 
     Astro.setFocus(focus)
     // TODO Fade in/out bodies outside scalle range.
+    // TODO Add local scale to enable drawring planetary systems
     document.getElementById("simtitle").innerHTML = title
     document.addEventListener('scroll', onScaleScroll)
     document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
@@ -85,14 +86,22 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
     hidebtn.addEventListener("click", function (e) {
         if (hiddenText) {
             hidebtn.innerHTML = "Hide Content"
-            content.style.visibility = "visible"
+            content.style.visibility = "hidden"
         } else {
             hidebtn.innerHTML = "Show Content"
             content.style.visibility = "hidden"
         }
         hiddenText = !hiddenText
     })
-
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    console.log(urlParams.get("view"))
+    if (urlParams.get("view") == "space")
+    {
+        document.getElementById("hide").style.display = "none"
+        document.getElementById("menu").style.display = "none"
+        content.style.visibility = "hidden"
+    }    
     animate()
 }
 

@@ -5,5 +5,7 @@ pure HTML and CSS.  While not the most flexible of formats, this was quick to de
 makes for a very light weight cite.  It is purely static as required by Github Pages, the 
 service used to host it.
 
-To deploy to live, use the following command.
-git subtree push --prefix dist origin gh-pages
+To deploy to live, use the two commands.  The first command returns the [COMMIT ID] used
+in the second command. 
+git subtree split --prefix dist 3d
+git push origin [COMMIT ID]:gh-pages --force

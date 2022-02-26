@@ -2,7 +2,6 @@
 @font-face {
   font-family: Jost;
   src: url("Jost-500-Medium.otf") format("opentype");
-  /* TODO: Put fonts and favicons into static files */
 }
 
 html {
@@ -269,9 +268,13 @@ a.glass:visited {
   float: right;
 }
 
+.float-left {
+  float: left;
+}
+
 /* Mobile Styling */
 @media (max-width: 475px) {
-  .float-right {
+  .float-right .float-left {
     float: none;
     margin-left: auto;
     margin-right: auto;
