@@ -59,6 +59,11 @@ img {
   padding: 5px;
   text-align: center;
   cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#hide:hover {
+  box-shadow: 0 0 1.6rem 0 rgba(0, 0, 0, .75); 
 }
 
 #simtitle {
@@ -237,12 +242,27 @@ html {
 a.glass {
   text-decoration: none;
   color: azure;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 a.glass:visited {
   text-decoration: none;
   color: azure;
 }
+
+a.glass:hover {
+  box-shadow: 0 0 1.6rem 0 rgba(0, 0, 0, .75); 
+}
+
+/* a.glass::after {
+  box-shadow: 0 .2rem 1rem 0 rgba(0, 0, 0, .4); 
+  opacity: .2;
+  transition: opacity 0.3s ease-in-out
+}
+
+a.glass:hover::after {
+  opacity: 1;
+} */
 
 .container { 
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 

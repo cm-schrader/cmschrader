@@ -99,7 +99,10 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
     if (urlParams.get("view") == "space")
     {
         document.getElementById("hide").style.display = "none"
-        document.getElementById("menu").style.display = "none"
+        if (document.getElementById("menu"))
+        {
+            document.getElementById("menu").style.display = "none"
+        }
         content.style.visibility = "hidden"
     }    
     animate()
