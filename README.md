@@ -4,3 +4,6 @@ It contains a variety of info on my skills and past experiences.  The page is wr
 pure HTML and CSS.  While not the most flexible of formats, this was quick to develop and 
 makes for a very light weight cite.  It is purely static as required by Github Pages, the 
 service used to host it.
+
+To deploy to live, use the following command.
+git subtree push --prefix dist origin gh-pages
