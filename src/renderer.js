@@ -56,12 +56,9 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
 
     window.addEventListener('resize', onWindowResize, false);
     function onWindowResize(){
-
         renderSystem.camera.aspect = window.innerWidth / window.innerHeight;
         renderSystem.camera.updateProjectionMatrix();
-
         renderSystem.renderer.setSize( window.innerWidth, window.innerHeight );
-
     }    
 
     function onScaleScroll (e) {
@@ -95,7 +92,6 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
     })
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get("view"))
     if (urlParams.get("view") == "space")
     {
         document.getElementById("hide").style.display = "none"

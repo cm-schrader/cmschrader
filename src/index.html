@@ -35,26 +35,13 @@ https://github.com/cm-schrader/cmschrader/tree/3d/src
     <div id="app">
 
       <!-- Menu -->
-      <div id="menu">
-        <div id="burger-menu">
-          <span></span>
-        </div>
-        <div id="menu-links">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/wip/">Skills</a></li>
-              <li><a href="/wip/">Experience</a></li>
-              <li><a href="/wip/">Education</a></li>
-              <!-- <li><a href="/wip/">Just Space</a></li> TODO Add Modal Warning that you are leaving Portfolio -->
-            </ul>
-        </div>
-      </div>
-      <script type="module" src="./menu.js"></script>
+      <div id="menu"></div>
+      <script type="module" src="./menu.js" depth="0"></script>
 
       <!-- Space Simulation -->
 <!-- TODO: Create menu dynamically so it can be imported -->
 <!-- TODO: Change menu for space view -->
-<!-- TODO: New 404 and other response pages -->
+<!-- TODO: Lazy loading -->
       <canvas id="space"></canvas>
       <div id="siminfo" class="glass">
         <h3 id="simtitle" class="siminfotext">Title</h3>

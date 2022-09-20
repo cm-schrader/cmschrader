@@ -4,6 +4,13 @@
   src: url("Jost-500-Medium.otf") format("opentype");
 }
 
+html, body {
+  overflow-y: hidden;
+}
+body {
+  position: relative;
+}
+
 html {
   line-height: 1.75rem;
   scroll-behavior: smooth;
@@ -96,7 +103,7 @@ img {
   cursor: pointer;
   height: 27px;
   width: 27px;
-  margin: 35px;
+  margin: 20px;
   overflow: visible;
   position: relative;
   z-index:2;
@@ -294,7 +301,7 @@ a.glass:hover::after {
 
 /* Mobile Styling */
 @media (max-width: 475px) {
-  .float-right .float-left {
+  .float-right, .float-left {
     float: none;
     margin-left: auto;
     margin-right: auto;

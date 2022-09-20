@@ -11,10 +11,12 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             input: {
+                menu: resolve(root, "menu.html"),
                 main: resolve(root, "index.html"),
                 page404: resolve(root, "404.html"),
                 wip: resolve(root, "wip", "index.html"),
                 wolf: resolve(root, "wolf", "index.html"),
+                osiris: resolve(root, "wolf", "osiris", "index.html"),
             }
         }
     }
