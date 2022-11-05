@@ -86,7 +86,7 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
             content.style.visibility = "hidden"
         } else {
             hidebtn.innerHTML = "Show Content"
-            content.style.visibility = "hidden"
+            content.style.visibility = "visible"
         }
         hiddenText = !hiddenText
     })
