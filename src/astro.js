@@ -26,7 +26,7 @@ function deg2rad(deg) {
 
 export class Body {
     constructor(scene, name, parent, bodyType, radius, mass, 
-            a, i, e, timeOfPeriapsis, raan, w, color, link, internalLink) {
+            a, i, e, timeOfPeriapsis, raan, w, color, link) {
         this.name = name
         this.mass = mass
         this.bodyType = bodyType
@@ -47,9 +47,9 @@ export class Body {
         }
 
         var georad = .66
-        if (this.bodyType === Star) georad = 1
-        if (this.bodyType === Asteroid || this.bodyType === Commet) georad = .4
-        if (this.bodyType === DwarfPlanet) georad = .5
+        if (this.bodyType === "Star") georad = 1
+        if (this.bodyType === "Asteroid" || this.bodyType === "Commet") georad = .4
+        if (this.bodyType === "DwarfPlanet") georad = .5
         this.markerGeometry = new THREE.SphereGeometry(georad, 16, 8)
         this.markerMaterial = new THREE.MeshBasicMaterial({color: this.color}) //wireframe: true
         this.markerMesh = new THREE.Mesh(this.markerGeometry, this.markerMaterial)
@@ -66,17 +66,17 @@ export class Body {
         this.label.style.fontSize = georad*2 + "rem"
         this.label.className = "spaceLabel"
         this.label.innerHTML = this.name
-        if (!(link == null && internalLink))
-        {
-            if (!internalLink)
-            {
-                this.label.target = "blank"
-            }
-            this.label.href = "https://en.wikipedia.org/w/index.php?search=" + this.name + "&title=Special%3ASearch&go=Go&ns0=1" 
-            if (link !== undefined) {
-                this.label.href = link
-            }
-        }
+        // if (!(link == null && internalLink))
+        // {
+        //     if (!internalLink)
+        //     {
+        //         this.label.target = "blank"
+        //     }
+        //     this.label.href = "https://en.wikipedia.org/w/index.php?search=" + this.name + "&title=Special%3ASearch&go=Go&ns0=1" 
+        //     if (link !== undefined) {
+        //         this.label.href = link
+        //     }
+        // }
         document.getElementById("spaceText").appendChild(this.label) 
         
         if (this.parent != null) {

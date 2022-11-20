@@ -1,0 +1,19 @@
+{
+    "Ganymede": {
+        "type": "Moon",
+        "radius": {"value": 0.413, "units": "re"},
+        "mass": {"value": 0.025, "units": "me"},
+        "semiMajor": {"value": 1070.4, "units": "Mm"},
+        "inclination": 2.214,
+        "eccentricity": 0.0013,
+        "raan": -11.26,
+        "argumentOfPeriapsis": 102.947,
+        "time of periapsis": 1,
+        "color": "#2458eb",
+        "description": "You're hear right now",
+        "link": "https://en.wikipedia.org/wiki/Ganymede_(moon)",
+        "children": {
+
+        }
+    }
+}

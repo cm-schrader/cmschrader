@@ -1,0 +1,51 @@
+{
+    "The Sun": {
+        "type": "Star",
+        "radius": {"value": 109, "units": "re"},
+        "mass": {"value": 332950, "units": "me"},
+        "semiMajor": {"value": 0, "units": "km"},
+        "inclination": 0,
+        "eccentricity": 0,
+        "raan": 0,
+        "argumentOfPeriapsis": 0,
+        "timeOfPeriapsis": 0,
+        "color": "#ffcb3d",
+        "description": "The sun is pretty cool.  Put a real description in.",
+        "link": "https://en.wikipedia.org/wiki/Sun",
+        "children": {
+            "Earth": {
+                "type": "Planet",
+                "radius": {"value": 1, "units": "re"},
+                "mass": {"value": 1, "units": "me"},
+                "semiMajor": {"value": 1, "units": "au"},
+                "inclination": 0,
+                "eccentricity": 0.0167,
+                "raan": -11.26,
+                "argumentOfPeriapsis": 102.947,
+                "time of periapsis": 1,
+                "color": "#345eeb",
+                "description": "You're hear right now",
+                "population": 7837000000,
+                "link": "https://en.wikipedia.org/wiki/Sun",
+                "children": {
+
+                }
+            },
+            "Jupiter": {
+                "type": "Planet",
+                "radius": {"value": 10.973, "units": "re"},
+                "mass": {"value": 317.8, "units": "me"},
+                "semiMajor": {"value": 5.2038, "units": "au"},
+                "inclination": 1.304,
+                "eccentricity": 0.0487,
+                "raan": 100.55615,
+                "argumentOfPeriapsis": 14.75385,
+                "time of periapsis": 0,
+                "color": "#ffcb3d",
+                "description": "Jupiter",
+                "link": "https://en.wikipedia.org/wiki/Jupiter",
+                "children": "Jupiter"
+            }
+        }
+    }
+}

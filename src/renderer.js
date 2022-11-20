@@ -43,7 +43,6 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
         time += (Date.now() - lastTime) * timeScale
         lastTime = Date.now()
 
-        
         renderSystem.camera.position.set(30*Math.sin(cameraAngle), 40*Math.cos(cameraAngle), 30*Math.cos(cameraAngle));
         renderSystem.camera.lookAt(new THREE.Vector3(0,0,0))
         renderSystem.camera.updateMatrixWorld(); 
@@ -71,8 +70,6 @@ export function System(focus, renderSystem, title, baseScale, baseTimeScale, scr
     onScaleScroll()
 
     Astro.setFocus(focus)
-    // TODO Fade in/out bodies outside scalle range.
-    // TODO Add local scale to enable drawring planetary systems
     document.getElementById("simtitle").innerHTML = title
     document.addEventListener('scroll', onScaleScroll)
     document.getElementById("scaleText").innerHTML = "Distance Scale: x1/" + Math.round(Astro.scale).toLocaleString() + "<br/>Time Scale: x" + Math.round(timeScale*1000).toLocaleString()//.toExponential(2)
