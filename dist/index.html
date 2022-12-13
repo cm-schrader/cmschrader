@@ -30,17 +30,17 @@ https://github.com/cm-schrader/cmschrader/tree/3d/src
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.2951744b.svg" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C.M. Schrader - Home</title>
-    <script type="module" crossorigin src="/assets/main.19b6865d.js"></script>
+    <script type="module" crossorigin src="/assets/main.39d17184.js"></script>
     <link rel="modulepreload" href="/assets/vendor.3fe77d69.js">
-    <link rel="modulepreload" href="/assets/renderer.15c35108.js">
+    <link rel="modulepreload" href="/assets/renderer.23a18428.js">
     <link rel="stylesheet" href="/assets/renderer.3f1ab353.css">
   </head>
   <body>
     <div id="app">
 
       <!-- Menu -->
-      <div id="menu"></div>
-      <script src="./menu.js" depth="0"></script>
+      <!-- <div id="menu"></div> -->
+      <!-- <script type="module" src="./menu.js" depth="0"></script> -->
 
       <!-- Space Simulation -->
 <!-- TODO: Create menu dynamically so it can be imported -->
@@ -61,36 +61,59 @@ https://github.com/cm-schrader/cmschrader/tree/3d/src
           <h2><i>Aerospace and Software Engineer</i></h2>
           <img src="/assets/profesional.015afed3.jpg" alt="Headshot" class="float-right">
           <p>
-            I'm an Aerospace Engineering graduate student at WPI. My BS is also in Aerospace 
-            Engineering with a minor in Computer Science. My focus is in Dynamics, Control, 
-            and Simulation although I also have a diverse skillset.
+            I'm an aerospace and software engineer currently working as a modeling and simulation
+            analyst at Maxar.  My primary interests are in systems modeling, dynamics, and control
+            and applying software design skills to design analysis tools.  Beyond this, my diverse skillset
+            includes skills ranging from circuit board design and embedded systems programing to web
+            development and rocketry.
           </p>
           <p>
-            This website is a portfolio of my skills and experiences.  You can keep scrolling
-            to see the highlights or you can see more comprehensive pages in the menu in the 
-            top left. If you have questions, opportunities, or just want to talk, you can 
-            email me using the button below
+            This website is an example of my simulation work.  If you have
+            quetions, opportunities, or are just interested in my work you can email me or check
+            my LinkedIn and Github if you want to learn more about my experience.  My resume is available on request.
           </p>
           <div style="text-align: center;">
             <a href="mailto:cms@cmschrader.com" class="glass">Email</a> 
+            <a style="margin-left: 4ex;" target="blank" href="https://www.linkedin.com/in/cm-schrader" class="glass">LinkedIn</a> 
+            <a style="margin-left: 4ex;" target="blank" href="https://github.com/cm-schrader" class="glass">Github</a> 
           </div>
         </div>
-        <div class="container right top-margin">
-          <h1>Space Simulation</h1>
+        <!-- <div class="container right">
+          <h1>Education</h1>
+          <p>
+            I graduated from Worcester Polytechnic Institute in 2022 with a Master of Science degree
+            in Aerospace Engineering.  I finished the degree with a 4.0 GPA and included courses like
+            Optimal Control, Computational Solid Mechanics, Machine Learning for Engineering Applications, 
+            and othres.  My BS in Aerospace Engineering with a Computer Science Minor 
+            was also completed at WPI.
+          </p>
+        </div> -->
+        <div class="container right"><!-- top-margin"> -->
+          <h1>The Solar System</h1>
           <p>
             In the background, you can see a simulation of the Solar System.  This is all 
-            running locally in your browser using 3D patched that I've implimented in 
+            running locally in your browser using two-body orbital mechanics that I've implimented in 
             Javascript.  As you scroll down, the distance scale is decreased and time 
             accelerates allowing you to see more of the system.  
           </p>
           <p>
+            If you're currious, you can see the astronautics code that runs this.  Javascript isn't typically
+            used for scientific computing, so if you want to look at a similar python program of mine its also shown below.
+          </p>
+          <div style="text-align: center;">
+            <a href="https://github.com/cm-schrader/cmschrader/tree/3d/src/astro.js" target="blank" class="glass">JS Code</a> 
+            <a style="margin-left: 4ex;" target="blank" href="https://github.com/cm-schrader/Solar-System-Sim" class="glass">Python Code</a> 
+          </div>
+        </div>
+        <div class="container left">
+          <p>
             This simulation includes all the planets as well as other bodies like 
             asteroids and minor planets and their real orbits.  If you want to learn
             more about any of them, clicking on their labels will take you to Wikipedia 
-            to learn more.
+            to learn more.  Keep scrolling to see the whole solar system.
           </p>
         </div>
-        <div class="container top-margin">
+        <!-- <div class="container top-margin">
           <h1>Work In Progress</h1>
           <p>
             I'm currently in the progress of overhauling this website.  Right now most of
@@ -106,7 +129,7 @@ https://github.com/cm-schrader/cmschrader/tree/3d/src
           <div style="text-align: center;">
             <a href="https://cm-schrader.github.io/cmschrader-legacysite/" class="glass">Legacy Site</a> 
           </div>
-        </div>
+        </div> -->
         <!-- <div class="container">
           <h1>Astronautics</h1>
           <p>
