@@ -1,0 +1,1 @@
+import{S as s,B as n,a as t,b as a}from"./renderer.23a18428.js";import"./vendor.3fe77d69.js";const e=s(),r=e.scene,c=new n(r,"Missing",null,t,696e6,19891e26,0,0,0,0,0,0,0);a(c,e,"Interstellar Space",1,.001,1e4,25);
